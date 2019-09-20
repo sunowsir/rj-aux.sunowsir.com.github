@@ -1,0 +1,63 @@
+软件说明：
+	本软件为绿色软件，命令行格式，解压后即可使用。
+使用说明：
+	解压后，使用终端进入当前根目录，运行rjsupplicant.sh脚本即可启动RG-SU。
+	如果rjsupplicant.sh 脚本无法运行（非可执行文件），请运行以下命令: "sudo chmod +x ./rjsupplicant.sh"
+	第一次使用时，可以通过 --help命令查看使用帮助文档。
+	当客户端以后台模式运行时，输出运行日志（--help可查看），正常情况下，直接打印在终端无运行日志。
+安装：
+	无需安装，解压tar包后，直接使用	
+卸载：
+	直接删除软件目录
+	
+目录结构：
+	|-rjsupplicant.sh
+	|-x86
+		|-rjsuppliant
+		|-updateprodect
+		|-lib
+			|-libcrypto.so.6
+			|-libpcap.so
+			|-libssl.so.6
+			|-librt-2.6.so
+			|-librt-2.10.2.so
+	|-x64
+		|-rjsuppliant
+		|-updateprodect
+		|-lib
+			|-libcrypto.so.6
+			|-libpcap.so
+			|-libssl.so.6
+			|-librt-2.6.so
+--------------------------------------------------------------------------
+usage：
+	this is a cmd green-software. you can run it after decompression.
+detail:
+	using tar command to decompress tarball, cd to the decompress directory,
+	run rjsupplicant.sh --help to get software usage.	
+	if rjsupplicant.sh bash file lost executable property, please run "sudo chmod +x ./rjsupplicant.sh" command.
+	if the rjsupplicant runs as daemon, it can output running log in run.log ("--help" for detail). if run as normal, it will print running information in terminal, but no log file.
+install:
+	it's not necessary to intall, just decompress the tarball and run it.
+uninstall: 
+	remove the software directory.
+
+directory:
+	|-rjsupplicant.sh
+	|-x86
+		|-rjsuppliant
+		|-updateprodect
+		|-lib
+			|-libcrypto.so.6
+			|-libpcap.so
+			|-libssl.so.6
+			|-librt-2.6.so
+			|-librt-2.10.2.so
+	|-x64
+		|-rjsuppliant
+		|-updateprodect
+		|-lib
+			|-libcrypto.so.6
+			|-libpcap.so
+			|-libssl.so.6
+			|-librt-2.6.so
