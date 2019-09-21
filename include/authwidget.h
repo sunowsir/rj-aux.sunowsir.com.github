@@ -13,6 +13,7 @@
 #include <QtNetwork/QNetworkInterface>
 #include <QProcess>
 #include <QMessageBox>
+#include <QCheckBox>
 
 #include <dlabel.h>
 #include <dlineedit.h>
@@ -31,10 +32,12 @@ class authWidget : public QWidget
     DLabel          *label_pass_num;
     DLabel          *label_choose_card;
     DLabel          *label_sudo_pass;
+    DLabel          *label_chbox;
 
     QTextEdit       *show_info_edit;
 
     DLineEdit       *lineedit_acco_num;
+
     DPasswordEdit   *passwordedit_pass_num;
     DPasswordEdit   *passwordedit_sudo_pass;
 
@@ -42,6 +45,8 @@ class authWidget : public QWidget
     QPushButton     *button_confirm;
 
     QStringList     *network_list;
+
+    QCheckBox       *checkbox;
 
     /* information */
 

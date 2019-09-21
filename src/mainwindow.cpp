@@ -9,7 +9,7 @@ MainWindow::MainWindow(QWidget *parent)
     this->w = new authWidget(this);
     // qDebug() << this->w->size();
     // this->resize(this->w->size()); //设置窗口大小
-    this->resize(640, 480);
+    this->resize(640, 540);
     setCentralWidget(this->w);
 
     this->t = new TrayWidget(this);

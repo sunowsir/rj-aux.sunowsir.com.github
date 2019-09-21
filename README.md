@@ -16,10 +16,20 @@
 - [ ] 禁止重复启动
 
 
+# 依赖环境
+
+```bash
+sudo apt-get install qt5-default qt5-qmake g++ qtcreator
+
+```
+
 
 ## Build
 
 ```bash
+mkdir build
+qmake ..
+make 
 
 ```
 

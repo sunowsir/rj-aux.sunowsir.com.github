@@ -19,9 +19,11 @@ int main(int argc, char *argv[])
     a.setOrganizationName("deepin");
     a.setApplicationVersion(DApplication::buildVersion("1.0"));
     //a.setApplicationAcknowledgementPage("https://你的网站");
-    a.setProductIcon(QIcon(":/image/resource/icon.png"));  //设置Logo
+    // a.setProductIcon(QIcon(":/image/resource/logo.png"));  //设置Logo
     //a.setProductName("DtkDemo");
-    a.setApplicationName("锐捷linux有线认证"); //只有在这儿修改窗口标题才有效
+    a.setApplicationName("锐捷linux有线认证GUI辅助"); //只有在这儿修改窗口标题才有效
+
+    a.setWindowIcon(QIcon(":/image/resource/icon.png"));
 
     MainWindow w(nullptr);
     w.show();

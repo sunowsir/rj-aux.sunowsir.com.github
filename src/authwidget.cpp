@@ -7,6 +7,10 @@
 
 authWidget::authWidget(DMainWindow *parent) : QWidget(parent)
 {
+
+    /* data */
+
+
     this->account = new QString;
     this->password = new QString;
     this->sudo_pass = new QString;
@@ -18,7 +22,6 @@ authWidget::authWidget(DMainWindow *parent) : QWidget(parent)
 
 
     /* get network card name  */
-
     this->network_list = new QStringList;
     foreach (QNetworkInterface i, QNetworkInterface::allInterfaces()) {
         if (i.flags().testFlag(QNetworkInterface::IsLoopBack)) continue;
@@ -35,10 +38,13 @@ authWidget::authWidget(DMainWindow *parent) : QWidget(parent)
 
 
 
+    /* control  */
+
+
+
     /* QTextEdit : show information */
     this->show_info_edit = new QTextEdit(this);
     this->show_info_edit->setReadOnly(true);
-    this->show_info_edit->setText("welcome");
     this->show_info_edit->resize(640, 120);
     this->show_info_edit->move(0, 0);
 
@@ -84,6 +90,7 @@ authWidget::authWidget(DMainWindow *parent) : QWidget(parent)
 
     /* sudo pass line edit */
     this->passwordedit_sudo_pass = new DPasswordEdit(this);
+    this->passwordedit_sudo_pass->setText("123");
     this->passwordedit_sudo_pass->move(260, 265);
 
 
@@ -106,11 +113,25 @@ authWidget::authWidget(DMainWindow *parent) : QWidget(parent)
     /* confirm button */
     this->button_confirm = new QPushButton(this);
     this->button_confirm->setText("认证");
-    this->button_confirm->move(260, 380);
+    this->button_confirm->move(260, 430);
+
+
+
+    /*  password checkbox  */
+    this->checkbox = new QCheckBox(this);
+    this->checkbox->move(200, 385);
+
+
+
+    /* password checkbox label */
+    this->label_chbox = new DLabel(this);
+    this->label_chbox->setText("记住信息");
+    this->label_chbox->move(230, 387);
 
 
 
     /* connect signal with slot */
+
 
     QWidget::connect(this->lineedit_acco_num, SIGNAL(textChanged(QString)),
                      this, SLOT(getLineEditText(QString)),
@@ -194,7 +215,6 @@ void authWidget::triggerauthen() {
                            << "-n"
                            << *(this->netcard));
 
-    qDebug() << *this->command << *this->cmd_args;
 
     this->process->start(*(this->command), *(this->cmd_args));
     // qDebug() << this->process->waitForStarted(4000);
