@@ -32,3 +32,10 @@ TrayWidget::TrayWidget(QWidget *parent) : QWidget(parent)
     this->tray_menu->addAction(this->tray_action_exit);
 
 }
+
+TrayWidget::~TrayWidget() {
+    delete this->tray_icon;
+    delete this->tray_menu;
+    delete this->tray_action_show;
+    delete this->tray_action_exit;
+}

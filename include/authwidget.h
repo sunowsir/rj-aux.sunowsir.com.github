@@ -28,6 +28,8 @@ class authWidget : public QWidget
 {
     Q_OBJECT
 
+    /* control */
+
     DLabel          *label_acco_num;
     DLabel          *label_pass_num;
     DLabel          *label_choose_card;
@@ -42,6 +44,7 @@ class authWidget : public QWidget
     DPasswordEdit   *passwordedit_sudo_pass;
 
     QComboBox       *combox;
+
     QPushButton     *button_confirm;
 
     QStringList     *network_list;
@@ -54,7 +57,6 @@ class authWidget : public QWidget
     QString         *password;
     QString         *sudo_pass;
     QString         *netcard;
-
     QString         *command;
     QStringList     *cmd_args;
 

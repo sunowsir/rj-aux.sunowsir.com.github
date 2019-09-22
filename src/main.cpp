@@ -1,15 +1,11 @@
 #include <DApplication>
-
 #include <DWidgetUtil>
-
 #include "mainwindow.h"
 
 
 DWIDGET_USE_NAMESPACE
 int main(int argc, char *argv[])
 {
-
-
 
     DApplication::loadDXcbPlugin();  //让bar处在标题栏中
     DApplication a(argc, argv);

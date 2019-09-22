@@ -19,7 +19,7 @@ class TrayWidget : public QWidget
 
 public:
     explicit TrayWidget(QWidget *parent = nullptr);
-
+    ~TrayWidget();
 
 signals:
 

@@ -8,20 +8,21 @@
 authWidget::authWidget(DMainWindow *parent) : QWidget(parent)
 {
 
-    /* data */
-
+    /* init data */
 
     this->account = new QString;
     this->password = new QString;
     this->sudo_pass = new QString;
-    this->process = nullptr;
+    this->netcard = new QString;
     this->command = new QString("./rj");
     this->cmd_args = new QStringList();
-    this->netcard = new QString;
+    this->process = nullptr;
+
 
 
 
     /* get network card name  */
+
     this->network_list = new QStringList;
     foreach (QNetworkInterface i, QNetworkInterface::allInterfaces()) {
         if (i.flags().testFlag(QNetworkInterface::IsLoopBack)) continue;
@@ -90,7 +91,6 @@ authWidget::authWidget(DMainWindow *parent) : QWidget(parent)
 
     /* sudo pass line edit */
     this->passwordedit_sudo_pass = new DPasswordEdit(this);
-    this->passwordedit_sudo_pass->setText("123");
     this->passwordedit_sudo_pass->move(260, 265);
 
 
@@ -118,15 +118,15 @@ authWidget::authWidget(DMainWindow *parent) : QWidget(parent)
 
 
     /*  password checkbox  */
-    this->checkbox = new QCheckBox(this);
-    this->checkbox->move(200, 385);
+    // this->checkbox = new QCheckBox(this);
+    // this->checkbox->move(200, 385);
 
 
 
     /* password checkbox label */
-    this->label_chbox = new DLabel(this);
-    this->label_chbox->setText("记住信息");
-    this->label_chbox->move(230, 387);
+    // this->label_chbox = new DLabel(this);
+    // this->label_chbox->setText("记住信息");
+    // this->label_chbox->move(230, 387);
 
 
 
@@ -158,7 +158,9 @@ authWidget::~authWidget() {
         quit.setWorkingDirectory(DApplication::applicationDirPath());
         quit.start("./rj", QStringList() << *(this->sudo_pass) << "-q");
         quit.waitForFinished();
+        quit.kill();
         this->process->kill();
+        this->process->close();
     }
 }
 
@@ -188,22 +190,28 @@ void authWidget::getNetCardText(const QString& card_name) {
 
 void authWidget::triggerauthen() {
 
-    if (this->process != nullptr) {
-        QProcess quit;
-        quit.start("./rj", QStringList() << *(this->sudo_pass) << "-q");
-        quit.waitForFinished();
-        this->process->kill();
-        delete this->process;
+    if (this->process == nullptr) {
+        this->process = new QProcess(this);
     }
-    this->process = new QProcess(this);
+
+    this->show_info_edit->clear();
+
+    QProcess quit;
+    quit.setWorkingDirectory(DApplication::applicationDirPath());
+    quit.start("./rj", QStringList() << *(this->sudo_pass) << "-q");
+    quit.waitForFinished();
+    quit.kill();
+
+
+    this->process->kill();
+    this->process->close();
+
 
     this->process->setWorkingDirectory(DApplication::applicationDirPath());
 
     this->cmd_args->clear();
     this->cmd_args->append(QStringList()
                            << *(this->sudo_pass)
-                           // << "-S"
-                           // << "./rjsupplicant"
                            << "-a"
                            << "1"
                            << "-d"
@@ -217,8 +225,6 @@ void authWidget::triggerauthen() {
 
 
     this->process->start(*(this->command), *(this->cmd_args));
-    // qDebug() << this->process->waitForStarted(4000);
-    // qDebug() << this->process->write(this->sudo_pass->toStdString().c_str());
 
     qDebug() << process->waitForStarted();
 
@@ -228,10 +234,11 @@ void authWidget::triggerauthen() {
                      this, SLOT(cmd_errout()));
 }
 
-
 void authWidget::cmd_output() {
     qDebug() << "get command output";
-    this->show_info_edit->append(QString::fromLocal8Bit(process->readAllStandardOutput()));
+    QString retStr = QString::fromLocal8Bit(process->readAllStandardOutput()).replace(QRegExp("^[\\s]*\n+"), "");
+    if (retStr == "") return;
+    this->show_info_edit->append(retStr);
 }
 
 void authWidget::cmd_errout() {
@@ -241,7 +248,8 @@ void authWidget::cmd_errout() {
         !errStr.contains("sysctl") &&
         !errStr.contains("write error") &&
         !errStr.contains("错误的文件描述符") &&
-        !errStr.contains("[sudo]")) {
+        !errStr.contains("sudo")
+        ) {
         QMessageBox::information(nullptr, "Error", errStr);
     }
 }
