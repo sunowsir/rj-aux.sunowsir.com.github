@@ -33,7 +33,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = rj-aux1.0.0
-DISTDIR = /home/sunow/Code/1.GitHub/1.MyPorject/rj-aux/build/.tmp/rj-aux1.0.0
+DISTDIR = /home/sunow/Code/1.GitHub/1.MyPorject/rj-aux/resource/.tmp/rj-aux1.0.0
 LINK          = g++
 LFLAGS        = -m64 -Wl,-O1
 LIBS          = $(SUBLIBS) -L/usr/X11R6/lib64 -ldtkwidget -ldtkcore -lQt5Widgets -lQt5Gui -lQt5Network -lQt5Core -lGL -lpthread 
@@ -339,8 +339,8 @@ compiler_rcc_clean:
 	-$(DEL_FILE) qrc_image.cpp
 qrc_image.cpp: ../image.qrc \
 		/usr/lib/x86_64-linux-gnu/qt5/bin/rcc \
-		../resource/icon.png \
-		../resource/logo.png
+		icon.png \
+		logo.png
 	/usr/lib/x86_64-linux-gnu/qt5/bin/rcc -name image ../image.qrc -o qrc_image.cpp
 
 compiler_moc_header_make_all: moc_mainwindow.cpp moc_authwidget.cpp moc_traywidget.cpp

@@ -14,7 +14,7 @@ authWidget::authWidget(DMainWindow *parent) : QWidget(parent)
     this->password = new QString;
     this->sudo_pass = new QString;
     this->netcard = new QString;
-    this->command = new QString("./rj");
+    this->command = new QString("./run");
     this->cmd_args = new QStringList();
     this->process = nullptr;
 
@@ -162,6 +162,7 @@ authWidget::~authWidget() {
         this->process->kill();
         this->process->close();
     }
+    restartNetwork();
 }
 
 
@@ -198,7 +199,7 @@ void authWidget::triggerauthen() {
 
     QProcess quit;
     quit.setWorkingDirectory(DApplication::applicationDirPath());
-    quit.start("./rj", QStringList() << *(this->sudo_pass) << "-q");
+    quit.start("./run", QStringList() << *(this->sudo_pass) << "./rjsupplicant" << "-q");
     quit.waitForFinished();
     quit.kill();
 
@@ -212,6 +213,7 @@ void authWidget::triggerauthen() {
     this->cmd_args->clear();
     this->cmd_args->append(QStringList()
                            << *(this->sudo_pass)
+                           << "./rjsupplicant"
                            << "-a"
                            << "1"
                            << "-d"
@@ -226,7 +228,7 @@ void authWidget::triggerauthen() {
 
     this->process->start(*(this->command), *(this->cmd_args));
 
-    qDebug() << process->waitForStarted();
+    qDebug() << "process->waitForStarted(): " << process->waitForStarted();
 
     QObject::connect(this->process, SIGNAL(readyReadStandardOutput()),
                      this, SLOT(cmd_output()));
@@ -238,6 +240,9 @@ void authWidget::cmd_output() {
     qDebug() << "get command output";
     QString retStr = QString::fromLocal8Bit(process->readAllStandardOutput()).replace(QRegExp("^[\\s]*\n+"), "");
     if (retStr == "") return;
+    if (retStr.contains("成功")) {
+        restartNetwork();
+    }
     this->show_info_edit->append(retStr);
 }
 
@@ -254,3 +259,11 @@ void authWidget::cmd_errout() {
     }
 }
 
+
+void authWidget::restartNetwork() {
+    QProcess resNetPro;
+    resNetPro.setWorkingDirectory(DApplication::applicationDirPath());
+    resNetPro.start("./run", QStringList() << *(this->sudo_pass) << "systemctl" << "restart" << "NetworkManager.service");
+    resNetPro.waitForFinished();
+    resNetPro.kill();
+}

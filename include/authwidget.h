@@ -62,6 +62,8 @@ class authWidget : public QWidget
 
     QProcess        *process;
 
+    void restartNetwork();
+
 signals:
 
 public:

@@ -1,8 +1,9 @@
+greaterThan(QT_MAJOR_VERSION, 4):
 
-QT  += core gui
-QT  += network
-
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+QT += widgets
+QT += core
+QT += gui
+QT += network
 
 TARGET = rj-aux
 TEMPLATE = app
@@ -21,9 +22,10 @@ HEADERS  += \
         include/traywidget.h
 
 CONFIG += link_pkgconfig
-PKGCONFIG += dtkwidget
 
 CONFIG += c++11
+
+PKGCONFIG += dtkwidget
 
 INCLUDEPATH += ./include/
 
