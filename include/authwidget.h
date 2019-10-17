@@ -33,7 +33,6 @@ class authWidget : public QWidget
     DLabel          *label_acco_num;
     DLabel          *label_pass_num;
     DLabel          *label_choose_card;
-    DLabel          *label_sudo_pass;
     DLabel          *label_chbox;
 
     QTextEdit       *show_info_edit;
@@ -41,7 +40,6 @@ class authWidget : public QWidget
     DLineEdit       *lineedit_acco_num;
 
     DPasswordEdit   *passwordedit_pass_num;
-    DPasswordEdit   *passwordedit_sudo_pass;
 
     QComboBox       *combox;
 
@@ -55,7 +53,6 @@ class authWidget : public QWidget
 
     QString         *account;
     QString         *password;
-    QString         *sudo_pass;
     QString         *netcard;
     QString         *command;
     QStringList     *cmd_args;
@@ -63,6 +60,8 @@ class authWidget : public QWidget
     QProcess        *process;
 
     void restartNetwork();
+    void getNetConnInfo();
+    QString getLastAccount();
 
 signals:
 
@@ -73,7 +72,6 @@ public:
 public slots:
     void getLineEditText(const QString&);
     void getPasswdText(const QString&);
-    void getSudopassText(const QString&);
     void getNetCardText(const QString&);
     void triggerauthen();
     void cmd_output();
