@@ -12,14 +12,17 @@
 - [x] dock支持
 - [x] 认证主逻辑
 - [x] 状态信息显示
-- [ ] 信息记忆
-- [ ] 拦截重复启动
+- [x] 信息记忆
+- [x] 拦截重复启动
+- [ ] 认证成功信息界面
 
 
 # 依赖环境
 
 ```bash
-sudo apt-get install qt5-default qt5-qmake g++ qtcreator
+sudo apt-get install qt5-default qt5-qmake g++ 
+sudo apt-get install libdtkwidget-dev libdtkcore-dev dh-make
+sudo apt-get install libdframeworkdbus-dev libqrencode-dev libzbar-dev libdtkwm-dev libdtkcore-bin  libqtshadowsocks-dev fakeroot
 
 ```
 
