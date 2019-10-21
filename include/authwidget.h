@@ -1,19 +1,19 @@
 #ifndef AUTHWIDGET_H
 #define AUTHWIDGET_H
 
-#include <QSystemTrayIcon>
-#include <QPushButton>
-#include <QComboBox>
-#include <QWidget>
-#include <QDialog>
 #include <QtGui>
 #include <QMenu>
 #include <QList>
+#include <QWidget>
+#include <QDialog>
 #include <QString>
-#include <QtNetwork/QNetworkInterface>
 #include <QProcess>
-#include <QMessageBox>
+#include <QComboBox>
 #include <QCheckBox>
+#include <QPushButton>
+#include <QMessageBox>
+#include <QSystemTrayIcon>
+#include <QtNetwork/QNetworkInterface>
 
 #include <dlabel.h>
 #include <dlineedit.h>
@@ -59,9 +59,7 @@ class authWidget : public QWidget
 
     QProcess        *process;
 
-    void restartNetwork();
-    void getNetConnInfo();
-    QString getLastAccount();
+    QString& runProOnce(QString pro_name = "", QStringList arg = QStringList());
 
 signals:
 
@@ -74,8 +72,8 @@ public slots:
     void getPasswdText(const QString&);
     void getNetCardText(const QString&);
     void triggerauthen();
-    void cmd_output();
-    void cmd_errout();
+    void getProOutput();
+    void getProErrout();
 };
 
 #endif // AUTHWIDGET_H

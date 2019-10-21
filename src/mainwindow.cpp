@@ -2,17 +2,17 @@
 
 DWIDGET_USE_NAMESPACE
 
-MainWindow::MainWindow(QWidget *parent)
-    : DMainWindow(parent)
+MainWindow::MainWindow( QWidget *parent )
+    : DMainWindow( parent )
 {
 
-    this->w = new authWidget(this);
+    this->w = new authWidget( this );
     // qDebug() << this->w->size();
     // this->resize(this->w->size()); //设置窗口大小
-    this->resize(640, 540);
-    setCentralWidget(this->w);
+    this->resize( 640, 540 );
+    setCentralWidget( this->w );
 
-    this->t = new TrayWidget(this);
+    this->t = new TrayWidget( this );
 
 }
 
@@ -37,7 +37,7 @@ void MainWindow::trayAction( QSystemTrayIcon::ActivationReason reason ) {
 
 void MainWindow::changeEvent( QEvent *e ) {
     if ( ( e->type() == QEvent::WindowStateChange ) && this->isMinimized() ) {
-        QTimer::singleShot(100, this, SLOT(close()));
+        QTimer::singleShot( 100, this, SLOT( close() ) );
     }
 }
 
@@ -45,3 +45,5 @@ void MainWindow::closeEvent( QCloseEvent *e ) {
     e->ignore();
     this->hide();
 }
+
+

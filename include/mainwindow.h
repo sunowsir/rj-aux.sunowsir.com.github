@@ -7,6 +7,8 @@
 
 #include <DMainWindow>
 
+#include <QMessageBox>
+
 #include "authwidget.h"
 #include "traywidget.h"
 
