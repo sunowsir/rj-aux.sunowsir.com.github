@@ -5,6 +5,8 @@ authWidget::authWidget( DMainWindow *parent ) : QWidget( parent )
 
     this->inputMaster = new InputWidget( this, runProOnce( "./getLastAccount" ) );
     this->netcardMaster = new NetCardWidget( this );
+    this->memoryMaster = new MemoryWidget( this );
+    this->ShowInfoMaster = new ShowInfoWidget( this );
 
     this->process = nullptr;
     this->cmd_args = new QStringList(QStringList() << "-a"
@@ -16,29 +18,10 @@ authWidget::authWidget( DMainWindow *parent ) : QWidget( parent )
                                      << "-n"
                                      << this->netcardMaster->getNetcard());
 
-    /* QTextEdit : show information */
-    this->show_info_edit = new QTextEdit( this );
-    this->show_info_edit->setReadOnly( true );
-    this->show_info_edit->resize( 640, 120 );
-    this->show_info_edit->move( 0, 0 );
-
     /* confirm button */
     this->button_confirm = new QPushButton( this );
     this->button_confirm->setText( "认证" );
     this->button_confirm->move( 260, 385 );
-
-    /*  password checkbox  */
-    this->checkbox = new QCheckBox( this );
-    this->checkbox->move( 200, 320 );
-    this->checkbox->setChecked( true );
-
-
-    /* password checkbox label */
-    this->label_chbox = new DLabel( this );
-    this->label_chbox->setText( "记住密码" );
-    this->label_chbox->move( 230, 320 );
-
-
 
     /* connect signal with slot */
 
@@ -60,7 +43,7 @@ authWidget::~authWidget() {
 
 void authWidget::triggerauthen() {
 
-    this->show_info_edit->clear();
+    this->ShowInfoMaster->clear();
 
     if ( this->process == nullptr ) {
         this->process = new QProcess( this );
@@ -77,7 +60,7 @@ void authWidget::triggerauthen() {
     /* get checkbox status && judge user input status */
 
     if ( !this->inputMaster->isDefaultAccount() || !this->inputMaster->isDefaultPassword() ) {
-        if ( this->checkbox->checkState() ) {
+        if ( this->memoryMaster->getCheckStatus() ) {
             this->cmd_args->append( QStringList() << "-S" << "1" );
         }
         this->cmd_args->append(QStringList()<< "-p" << this->inputMaster->getPassword());
@@ -101,14 +84,12 @@ void authWidget::getProOutput() {
 
     QString retStr = QString::fromLocal8Bit( process->readAllStandardOutput() ).replace( QRegExp( "^[\\s]*\n+" ), "" );
     if ( retStr.isEmpty() ) return;
-    this->show_info_edit->append( retStr );
+    this->ShowInfoMaster->append( retStr );
 
     if ( retStr.contains( "成功" ) ) {
         // restart network;
         runProOnce( "systemctl", QStringList() << "restart" << "NetworkManager.service" );
-
-        this->show_info_edit->clear();
-        this->show_info_edit->append( retStr );
+        this->ShowInfoMaster->setText( retStr );
     }
 }
 

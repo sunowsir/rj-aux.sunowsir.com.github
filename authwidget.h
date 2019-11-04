@@ -21,7 +21,9 @@
 #include <dpasswordedit.h>
 
 #include "inputwidget.h"
+#include "memorywidget.h"
 #include "netcardwidget.h"
+#include "showinfowidget.h"
 
 DWIDGET_USE_NAMESPACE
 
@@ -31,10 +33,10 @@ class authWidget : public QWidget
 
     /* control */
 
-    DLabel          *label_chbox;
-    QTextEdit       *show_info_edit;
     QPushButton     *button_confirm;
-    QCheckBox       *checkbox;
+
+    MemoryWidget    *memoryMaster;
+    ShowInfoWidget  *ShowInfoMaster;
 
     /* information */
 
