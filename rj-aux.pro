@@ -11,23 +11,25 @@ TEMPLATE = app
 DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
-        src/main.cpp \
-        src/mainwindow.cpp \
-        src/authwidget.cpp \
-        src/traywidget.cpp
+        inputwidget.cpp \
+        main.cpp \
+        mainwindow.cpp \
+        authwidget.cpp \
+        netcardwidget.cpp \
+        traywidget.cpp
 
 HEADERS  += \
-        include/mainwindow.h \
-        include/authwidget.h \
-        include/traywidget.h
+        mainwindow.h \
+        authwidget.h \
+        netcardwidget.h \
+        traywidget.h \
+        inputwidget.h
 
 CONFIG += link_pkgconfig
 
 CONFIG += c++11
 
 PKGCONFIG += dtkwidget
-
-INCLUDEPATH += ./include/
 
 DISTFILES +=
 

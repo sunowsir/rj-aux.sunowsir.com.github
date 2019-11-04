@@ -1,3 +1,0 @@
-#!/bin/bash
-
-./rjsupplicant -l 2> /dev/null | awk '{if (NR == 4) {printf("%s\n", $0)};}' | grep -Eo '[0-9]*'

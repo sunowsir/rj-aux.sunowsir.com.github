@@ -6,10 +6,10 @@ MainWindow::MainWindow( QWidget *parent )
     : DMainWindow( parent )
 {
 
-    this->w = new authWidget( this );
-    // qDebug() << this->w->size();
-    // this->resize(this->w->size()); //设置窗口大小
     this->resize( 640, 540 );
+
+    this->w = new authWidget( this );
+    // this->resize(this->w->size()); //设置窗口大小
     setCentralWidget( this->w );
 
     this->t = new TrayWidget( this );

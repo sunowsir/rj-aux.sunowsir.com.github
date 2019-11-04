@@ -1,4 +1,4 @@
-#ifndef AUTHWIDGET_H
+#ifndef AUTHWIDGET_H 
 #define AUTHWIDGET_H
 
 #include <QtGui>
@@ -8,19 +8,20 @@
 #include <QDialog>
 #include <QString>
 #include <QProcess>
-#include <QComboBox>
 #include <QCheckBox>
 #include <QPushButton>
 #include <QMessageBox>
 #include <QSystemTrayIcon>
-#include <QtNetwork/QNetworkInterface>
 
 #include <dlabel.h>
 #include <dlineedit.h>
-#include <dpasswordedit.h>
 #include <dtextedit.h>
-
 #include <DMainWindow>
+#include <DApplication>
+#include <dpasswordedit.h>
+
+#include "inputwidget.h"
+#include "netcardwidget.h"
 
 DWIDGET_USE_NAMESPACE
 
@@ -30,36 +31,22 @@ class authWidget : public QWidget
 
     /* control */
 
-    DLabel          *label_acco_num;
-    DLabel          *label_pass_num;
-    DLabel          *label_choose_card;
     DLabel          *label_chbox;
-
     QTextEdit       *show_info_edit;
-
-    DLineEdit       *lineedit_acco_num;
-
-    DPasswordEdit   *passwordedit_pass_num;
-
-    QComboBox       *combox;
-
     QPushButton     *button_confirm;
-
-    QStringList     *network_list;
-
     QCheckBox       *checkbox;
 
     /* information */
 
-    QString         *account;
-    QString         *password;
-    QString         *netcard;
-    QString         *command;
     QStringList     *cmd_args;
-
     QProcess        *process;
 
-    QString& runProOnce(QString pro_name = "", QStringList arg = QStringList());
+    /* Input infomation get */
+
+    InputWidget     *inputMaster;
+    NetCardWidget   *netcardMaster;
+
+    QString runProOnce(QString pro_name = "", QStringList arg = QStringList());
 
 signals:
 
@@ -68,9 +55,6 @@ public:
     ~authWidget();
 
 public slots:
-    void getLineEditText(const QString&);
-    void getPasswdText(const QString&);
-    void getNetCardText(const QString&);
     void triggerauthen();
     void getProOutput();
     void getProErrout();
