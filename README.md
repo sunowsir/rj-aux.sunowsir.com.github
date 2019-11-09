@@ -19,12 +19,10 @@
 
 # 依赖环境
 
-```bash
-sudo apt-get install qt5-default qt5-qmake g++ 
-sudo apt-get install libdtkwidget-dev libdtkcore-dev dh-make
-sudo apt-get install libdframeworkdbus-dev libqrencode-dev libzbar-dev libdtkwm-dev libdtkcore-bin  libqtshadowsocks-dev fakeroot
-
-```
+* qt
+* g++
+* dtk
+* gdb
 
 
 ## Build
@@ -44,4 +42,4 @@ make
 
 ## 声明
 
-1. 本软件采用GPLv3协议开源，但是不包括锐捷源生程序，本仓库中也不包含锐捷源生程序，打包的deb安装包中集成了锐捷源程序。
+1. 本软件采用GPLv3协议开源，但是不包括锐捷源生程序，本仓库中也不包含锐捷源生程序，打包的deb安装包中集成了锐捷源程序，安装后可以直接使用。

@@ -2,6 +2,7 @@
 
 authWidget::authWidget( DMainWindow *parent ) : QWidget( parent )
 {
+    this->parent = parent;
 
     this->inputMaster = new InputWidget( this, runProOnce( "./getLastAccount" ) );
     this->netcardMaster = new NetCardWidget( this );
@@ -9,7 +10,7 @@ authWidget::authWidget( DMainWindow *parent ) : QWidget( parent )
     this->ShowInfoMaster = new ShowInfoWidget( this );
 
     this->process = nullptr;
-    this->cmd_args = new QStringList(QStringList() << "-a"
+    this->pro_args = QStringList(QStringList() << "-a"
                                      << "1"
                                      << "-d"
                                      << "0"
@@ -53,23 +54,22 @@ void authWidget::triggerauthen() {
         this->process->close();
     }
 
-    // this->cmd_args->clear();
-    this->cmd_args->replace(5, this->inputMaster->getAccount());
-    this->cmd_args->replace(7, this->netcardMaster->getNetcard());
+    this->pro_args.replace(5, this->inputMaster->getAccount());
+    this->pro_args.replace(7, this->netcardMaster->getNetcard());
 
     /* get checkbox status && judge user input status */
 
     if ( !this->inputMaster->isDefaultAccount() || !this->inputMaster->isDefaultPassword() ) {
         if ( this->memoryMaster->getCheckStatus() ) {
-            this->cmd_args->append( QStringList() << "-S" << "1" );
+            this->pro_args.append( QStringList() << "-S" << "1" );
         }
-        this->cmd_args->append(QStringList()<< "-p" << this->inputMaster->getPassword());
+        this->pro_args.append(QStringList()<< "-p" << this->inputMaster->getPassword());
     }
 
     /* start run the rjsupplicant program. */
 
     this->process->setWorkingDirectory( DApplication::applicationDirPath() );
-    this->process->start( "./rjsupplicant", *( this->cmd_args ) );
+    this->process->start( "./rjsupplicant", this->pro_args );
     this->process->waitForStarted();
 
     /* connect signal with slot. */
@@ -82,7 +82,9 @@ void authWidget::triggerauthen() {
 
 void authWidget::getProOutput() {
 
-    QString retStr = QString::fromLocal8Bit( process->readAllStandardOutput() ).replace( QRegExp( "^[\\s]*\n+" ), "" );
+    QString retStr = QString::fromLocal8Bit(
+                process->readAllStandardOutput() ).replace(QString("\n"), QString(""));
+
     if ( retStr.isEmpty() ) return;
     this->ShowInfoMaster->append( retStr );
 
@@ -90,6 +92,8 @@ void authWidget::getProOutput() {
         // restart network;
         runProOnce( "systemctl", QStringList() << "restart" << "NetworkManager.service" );
         this->ShowInfoMaster->setText( retStr );
+        QMessageBox::information( nullptr, "登录成功", "登录面板已隐藏到托盘" );
+        this->parent->hide();
     }
 }
 

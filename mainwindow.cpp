@@ -16,8 +16,7 @@ MainWindow::MainWindow( QWidget *parent )
 
 }
 
-MainWindow::~MainWindow()
-{
+MainWindow::~MainWindow() {
     this->w->close();
     delete this->w;
     this->t->close();

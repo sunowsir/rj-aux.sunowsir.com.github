@@ -30,6 +30,7 @@ DWIDGET_USE_NAMESPACE
 class authWidget : public QWidget
 {
     Q_OBJECT
+    DMainWindow     *parent;
 
     /* control */
 
@@ -40,15 +41,15 @@ class authWidget : public QWidget
 
     /* information */
 
-    QStringList     *cmd_args;
     QProcess        *process;
+    QStringList     pro_args;
 
     /* Input infomation get */
 
     InputWidget     *inputMaster;
     NetCardWidget   *netcardMaster;
 
-    QString runProOnce(QString pro_name = "", QStringList arg = QStringList());
+    static QString runProOnce(QString pro_name = "", QStringList arg = QStringList());
 
 signals:
 
