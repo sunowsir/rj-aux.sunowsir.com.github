@@ -1,41 +1,43 @@
 #include "traywidget.h"
 
-TrayWidget::TrayWidget(QWidget *parent) : QWidget(parent)
+TrayWidget::TrayWidget( QWidget *parent ) : QWidget( parent )
 {
     /* tray */
 
-    this->tray_icon = new QSystemTrayIcon(this);
-    this->tray_icon->setIcon(QIcon(":/image/resource/icon.png"));
+    this->tray_icon = new QSystemTrayIcon( this );
+    this->tray_icon->setIcon( QIcon( ":/image/resource/icon.png" ) );
     this->tray_icon->show();
-    QWidget::connect(this->tray_icon, SIGNAL(activated( QSystemTrayIcon::ActivationReason )),
-                     parent, SLOT(trayAction( QSystemTrayIcon::ActivationReason )),
-                     Qt::AutoConnection);
 
-    this->tray_menu = new QMenu(this);
-    this->tray_action_show = new QAction(this);
-    this->tray_action_exit = new QAction(this);
+    this->menu = new QMenu( this );
+    this->show_act = new QAction( this );
+    this->hide_act = new QAction( this );
+    this->exit_act = new QAction( this );
 
+    this->show_act->setText( "显示" );
+    this->hide_act->setText( "隐藏" );
+    this->exit_act->setText( "退出" );
 
-    this->tray_action_show->setText("显示");
-    this->tray_action_exit->setText("退出");
-
-    QWidget::connect(this->tray_action_show, SIGNAL(triggered()),
-                parent, SLOT(show()),
-                Qt::AutoConnection);
-    QWidget::connect(this->tray_action_exit, SIGNAL(triggered()),
-                qApp, SLOT(quit()),
-                Qt::AutoConnection);
 
     // this->tray_icon->setToolTip("test set tool tip for tray_icon");
-    this->tray_icon->setContextMenu(this->tray_menu);
-    this->tray_menu->addAction(this->tray_action_show);
-    this->tray_menu->addAction(this->tray_action_exit);
 
-}
+    this->tray_icon->setContextMenu( this->menu );
+    this->menu->addAction( this->show_act );
+    this->menu->addAction( this->hide_act );
+    this->menu->addAction( this->exit_act );
 
-TrayWidget::~TrayWidget() {
-    delete this->tray_icon;
-    delete this->tray_menu;
-    delete this->tray_action_show;
-    delete this->tray_action_exit;
+
+    /* connect signal with slot. */
+
+    QWidget::connect( this->tray_icon, SIGNAL( activated( QSystemTrayIcon::ActivationReason ) ),
+                    parent, SLOT( trayAction( QSystemTrayIcon::ActivationReason ) ),
+                    Qt::AutoConnection );
+    QWidget::connect( this->show_act, SIGNAL( triggered() ),
+                    parent, SLOT( show() ),
+                    Qt::AutoConnection );
+    QWidget::connect( this->hide_act, SIGNAL( triggered() ),
+                    parent, SLOT( hide() ),
+                    Qt::AutoConnection );
+    QWidget::connect( this->exit_act, SIGNAL( triggered() ),
+                    qApp, SLOT( quit() ),
+                    Qt::AutoConnection );
 }

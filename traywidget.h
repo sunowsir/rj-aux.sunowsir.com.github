@@ -12,14 +12,14 @@ class TrayWidget : public QWidget
     Q_OBJECT
     QSystemTrayIcon *tray_icon;
 
-    QMenu           *tray_menu;
+    QMenu           *menu;
 
-    QAction         *tray_action_show;
-    QAction         *tray_action_exit;
+    QAction         *show_act;
+    QAction         *exit_act;
+    QAction         *hide_act;
 
 public:
     explicit TrayWidget(QWidget *parent = nullptr);
-    ~TrayWidget();
 
 signals:
 

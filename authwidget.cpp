@@ -54,8 +54,11 @@ void authWidget::triggerauthen() {
         this->process->close();
     }
 
-    this->pro_args.replace(5, this->inputMaster->getAccount());
-    this->pro_args.replace(7, this->netcardMaster->getNetcard());
+    if ( this->pro_args[5] != this->inputMaster->getAccount() )
+        this->pro_args.replace(5, this->inputMaster->getAccount());
+    if ( this->pro_args[7] != this->netcardMaster->getNetcard() )
+        this->pro_args.replace(7, this->netcardMaster->getNetcard());
+
 
     /* get checkbox status && judge user input status */
 
@@ -66,11 +69,13 @@ void authWidget::triggerauthen() {
         this->pro_args.append(QStringList()<< "-p" << this->inputMaster->getPassword());
     }
 
+
     /* start run the rjsupplicant program. */
 
     this->process->setWorkingDirectory( DApplication::applicationDirPath() );
     this->process->start( "./rjsupplicant", this->pro_args );
     this->process->waitForStarted();
+
 
     /* connect signal with slot. */
 
