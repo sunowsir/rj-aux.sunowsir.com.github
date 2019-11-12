@@ -10,24 +10,21 @@ TEMPLATE = app
 
 DEFINES += QT_DEPRECATED_WARNINGS
 
-SOURCES += \
-        inputwidget.cpp \
-        main.cpp \
-        mainwindow.cpp \
-        authwidget.cpp \
-        memorywidget.cpp \
-        netcardwidget.cpp \
-        showinfowidget.cpp \
-        traywidget.cpp
+INCLUDEPATH += include/
 
-HEADERS  += \
-        mainwindow.h \
-        authwidget.h \
-        memorywidget.h \
-        netcardwidget.h \
-        showinfowidget.h \
-        traywidget.h \
-        inputwidget.h
+SOURCES += \
+        src/main.cpp \
+        src/mainwindow.cpp \
+        src/authwidget.cpp \
+        src/showinfowidget.cpp \
+        src/traywidget.cpp
+
+HEADERS += \
+        include/mainwindow.h \
+        include/authwidget.h \
+        include/showinfowidget.h \
+        include/traywidget.h \
+
 
 CONFIG += link_pkgconfig
 
