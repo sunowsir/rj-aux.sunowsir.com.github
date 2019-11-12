@@ -1,0 +1,9 @@
+#!/bin/bash
+
+
+if [[ "$(ps -aux | grep -v 'grep' | grep 'rj-aux')x" == "x" ]];
+then
+    gksudo /opt/rjsupplicant-aux/rj-aux
+fi
+
+
