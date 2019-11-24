@@ -73,9 +73,10 @@ authWidget::authWidget( DMainWindow *parent ) : QWidget( parent )
 
 
 
-
     this->ShowInfoMaster = new ShowInfoWidget( this );
 
+
+    this->rund_status = false;
     this->process = nullptr;
     this->pro_args = QStringList(QStringList() << "-a"
                                      << "1"
@@ -109,16 +110,20 @@ authWidget::authWidget( DMainWindow *parent ) : QWidget( parent )
 }
 
 authWidget::~authWidget() {
-    if ( this->process != nullptr ) {
-        runProOnce( "./rjsupplicant", QStringList() << "-q" );
+    if (this->rund_status) {
+        if ( this->process != nullptr ) {
+            runProOnce( "./rjsupplicant", QStringList() << "-q" );
+        }
+        // restart network;
+        runProOnce( "systemctl", QStringList() << "restart" << "NetworkManager.service" );
     }
-    // restart network;
-    runProOnce( "systemctl", QStringList() << "restart" << "NetworkManager.service" );
 }
 
 
 
 void authWidget::triggerauthen() {
+
+    if (!this->rund_status) this->rund_status = true;
 
     this->ShowInfoMaster->clear();
 

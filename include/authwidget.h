@@ -9,10 +9,10 @@
 #include <QString>
 #include <QProcess>
 #include <QCheckBox>
+#include <QComboBox>
 #include <QPushButton>
 #include <QMessageBox>
 #include <QSystemTrayIcon>
-#include <QComboBox>
 #include <QtNetwork/QNetworkInterface>
 
 
@@ -42,8 +42,9 @@ class authWidget : public QWidget
     // MemoryWidget    *memoryMaster;
     ShowInfoWidget  *ShowInfoMaster;
 
-    /* information */
+    /* QProcess */
 
+    bool            rund_status;
     QProcess        *process;
     QStringList     pro_args;
 

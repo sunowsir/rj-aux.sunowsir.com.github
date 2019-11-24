@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
     a.setAttribute(Qt::AA_UseHighDpiPixmaps);
     a.loadTranslator();
     a.setOrganizationName("deepin");
-    a.setApplicationVersion(DApplication::buildVersion("2.3"));
+    a.setApplicationVersion(DApplication::buildVersion("2.4"));
     a.setApplicationName("锐捷linux有线认证GUI辅助");
 
     a.setWindowIcon(QIcon(":/image/resource/icon.png"));
