@@ -230,10 +230,12 @@ void authWidget::getProOutput() {
     if ( retStr.isEmpty() ) return;
     this->ShowInfoMaster->append( retStr );
 
+
+
     if ( retStr.contains( "成功" ) ) {
         // restart network;
         runProOnce( "systemctl", QStringList() << "restart" << "NetworkManager.service" );
-        this->ShowInfoMaster->setText( retStr );
+        // this->ShowInfoMaster->setText( retStr );
         this->parent->hide();
         QMessageBox::information( nullptr, "登录成功", "登录面板已隐藏到托盘" );
     }
