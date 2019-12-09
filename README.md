@@ -27,6 +27,12 @@
 * qt
 * dtk
 
+```bash
+
+sudo apt install -y libdtkwidget-dev g++ gdb make qtchooser qt5-qmake qt5-default gdb
+
+```
+
 
 ## 编译
 
@@ -38,11 +44,14 @@ mkdir build
 cd build/
 qmake ..
 make 
-
 ```
 
 *  手动用开发环境构建后是无法直接使用，需要将构建生成的可执行程序以及`script/`下的脚本一同放到锐捷源生程序目录下.
 * 打包的deb安装包中集成了锐捷源程序，安装后可以直接使用。
+
+## 下载
+
+详情见: [releases](https://github.com/sunowsir/rj-aux/releases)
 
 ## 声明
 
