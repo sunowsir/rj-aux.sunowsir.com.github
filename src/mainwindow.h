@@ -25,8 +25,10 @@ public:
     ~MainWindow();
 
 protected:
+    /*
     void closeEvent(QCloseEvent *event);
     void changeEvent(QEvent *e);
+    */
 
 public slots:
     void trayAction(QSystemTrayIcon::ActivationReason reason);

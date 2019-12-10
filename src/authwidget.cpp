@@ -163,8 +163,8 @@ void authWidget::triggerauthen() {
 
     QObject::connect( this->process, SIGNAL( readyReadStandardOutput() ),
                       this, SLOT( getProOutput() ) );
-    QObject::connect( this->process, SIGNAL( readyReadStandardError() ),
-                      this, SLOT( getProErrout() ) );
+    // QObject::connect( this->process, SIGNAL( readyReadStandardError() ),
+    //                   this, SLOT( getProErrout() ) );
 }
 
 
@@ -229,7 +229,6 @@ void authWidget::getProOutput() {
 
     if ( retStr.isEmpty() ) return;
     this->ShowInfoMaster->append( retStr );
-
 
 
     if ( retStr.contains( "成功" ) ) {
