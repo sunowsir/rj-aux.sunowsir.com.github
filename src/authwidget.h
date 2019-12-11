@@ -10,6 +10,7 @@
 #include <QProcess>
 #include <QCheckBox>
 #include <QComboBox>
+#include <QSettings>
 #include <QPushButton>
 #include <QMessageBox>
 #include <QSystemTrayIcon>
@@ -30,6 +31,9 @@ DWIDGET_USE_NAMESPACE
 class authWidget : public QWidget
 {
     Q_OBJECT
+
+    QSettings       *settings;
+
     DMainWindow     *parent;
 
     /* control */

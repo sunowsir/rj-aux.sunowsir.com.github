@@ -2,6 +2,10 @@
 
 authWidget::authWidget( DMainWindow *parent ) : QWidget( parent )
 {
+    
+    this->settings = new QSettings( DApplication::applicationDirPath() + "/Config.ini", QSettings::IniFormat );
+    qDebug() << DApplication::applicationDirPath() + "/Config.ini";
+
     this->parent = parent;
 
 
@@ -59,11 +63,13 @@ authWidget::authWidget( DMainWindow *parent ) : QWidget( parent )
 
 
 
-
     /*  password checkbox  */
+    this->settings->beginGroup( "CheckBox" );
+    bool default_status = this->settings->value( "memory_checkbox" ).toInt(); 
+    this->settings->endGroup();
     this->memory_checkbox = new QCheckBox( this );
     this->memory_checkbox->move( 200, 320 );
-    this->memory_checkbox->setChecked( true );
+    this->memory_checkbox->setChecked( default_status );
 
 
     /* password checkbox label */
@@ -124,6 +130,11 @@ authWidget::~authWidget() {
 void authWidget::triggerauthen() {
 
     if (!this->rund_status) this->rund_status = true;
+    
+    /* save checkbox status.  */
+    this->settings->beginGroup("CheckBox");
+    this->settings->setValue("memory_checkbox", this->memory_checkbox->checkState());
+    this->settings->endGroup();
 
     this->ShowInfoMaster->clear();
 
@@ -165,6 +176,7 @@ void authWidget::triggerauthen() {
                       this, SLOT( getProOutput() ) );
     // QObject::connect( this->process, SIGNAL( readyReadStandardError() ),
     //                   this, SLOT( getProErrout() ) );
+    
 }
 
 
