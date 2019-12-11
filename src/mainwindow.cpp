@@ -40,12 +40,12 @@ void MainWindow::changeEvent( QEvent *e ) {
         QTimer::singleShot( 100, this, SLOT( close() ) );
     }
 }
-*/
 
-/*
+
 void MainWindow::closeEvent( QCloseEvent *e ) {
     e->ignore();
     this->hide();
 }
+
 */
 

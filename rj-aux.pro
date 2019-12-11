@@ -10,7 +10,6 @@ TEMPLATE = app
 
 DEFINES += QT_DEPRECATED_WARNINGS
 
-INCLUDEPATH += include/
 
 SOURCES += \
         src/main.cpp \
@@ -20,10 +19,10 @@ SOURCES += \
         src/traywidget.cpp
 
 HEADERS += \
-        include/mainwindow.h \
-        include/authwidget.h \
-        include/showinfowidget.h \
-        include/traywidget.h \
+        src/mainwindow.h \
+        src/authwidget.h \
+        src/showinfowidget.h \
+        src/traywidget.h \
 
 
 CONFIG += link_pkgconfig

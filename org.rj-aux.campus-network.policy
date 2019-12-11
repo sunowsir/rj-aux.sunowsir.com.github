@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE policyconfig PUBLIC
+ "-//freedesktop//DTD PolicyKit Policy Configuration 1.0//EN"
+ "http://www.freedesktop.org/standards/PolicyKit/1.0/policyconfig.dtd">
+<policyconfig>
+
+  <vendor>rj-aux</vendor>
+  <vendor_url>https://github.com/sunowsir/rj-aux</vendor_url>
+  <icon_name>rj-aux</icon_name>
+
+  <action id="org.rj-aux.campus-network.login">
+    <!-- <message>To use campus network, you need to authenticate.</message> -->
+    <!-- <message xml:lang="zh_CN">要使用校园网,您需要验证</message> -->
+    <message>使用校园网需要授权</message>
+    <defaults>
+      <allow_any>auth_admin</allow_any>
+      <allow_inactive>auth_admin</allow_inactive>
+      <allow_active>auth_admin_keep</allow_active>
+    </defaults>
+    <annotate key = "org.freedesktop.policykit.exec.path">/opt/rjsupplicant-aux/rj-aux</annotate>
+    <annotate key="org.freedesktop.policykit.exec.allow_gui">true</annotate>
+  </action>
+
+</policyconfig>
