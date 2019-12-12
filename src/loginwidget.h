@@ -1,5 +1,5 @@
-#ifndef AUTHWIDGET_H
-#define AUTHWIDGET_H
+#ifndef loginWIDGET_H
+#define loginWIDGET_H
 
 #include <QtGui>
 #include <QMenu>
@@ -28,7 +28,7 @@
 
 DWIDGET_USE_NAMESPACE
 
-class authWidget : public QWidget
+class loginWidget : public QWidget
 {
     Q_OBJECT
 
@@ -42,6 +42,9 @@ class authWidget : public QWidget
 
     DLabel          *memory_label;
     QCheckBox       *memory_checkbox;
+
+    DLabel          *auto_label;
+    QCheckBox       *auto_checkbox;
 
     // MemoryWidget    *memoryMaster;
     ShowInfoWidget  *ShowInfoMaster;
@@ -75,17 +78,18 @@ class authWidget : public QWidget
 
     // NetCardWidget   *netcardMaster;
 
-    bool getCheckStatus();
+    bool getMCheckStatus();
+    bool getLCheckStatus();
     void RefreshNetCard();
     static QString runProOnce(QString pro_name = "", QStringList arg = QStringList());
 signals:
 
 public:
-    explicit authWidget(DMainWindow *parent = nullptr);
-    ~authWidget();
+    explicit loginWidget(DMainWindow *parent = nullptr);
+    ~loginWidget();
 
 public slots:
-    void triggerauthen();
+    void triggerlogin();
     void getProOutput();
     void getProErrout();
     void getAccountInput(const QString&);
@@ -93,4 +97,4 @@ public slots:
     void getNetCardChoice(const QString&);
 };
 
-#endif // AUTHWIDGET_H
+#endif // loginWIDGET_H

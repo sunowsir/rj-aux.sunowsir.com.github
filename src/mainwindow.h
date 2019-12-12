@@ -9,7 +9,7 @@
 
 #include <QMessageBox>
 
-#include "authwidget.h"
+#include "loginwidget.h"
 #include "traywidget.h"
 
 DWIDGET_USE_NAMESPACE
@@ -17,7 +17,7 @@ DWIDGET_USE_NAMESPACE
 class MainWindow : public DMainWindow
 {
     Q_OBJECT
-    authWidget  *w;
+    loginWidget  *w;
     TrayWidget  *t;
 
 public:

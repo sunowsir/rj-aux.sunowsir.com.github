@@ -14,13 +14,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         src/main.cpp \
         src/mainwindow.cpp \
-        src/authwidget.cpp \
+        src/loginwidget.cpp \
         src/showinfowidget.cpp \
         src/traywidget.cpp
 
 HEADERS += \
         src/mainwindow.h \
-        src/authwidget.h \
+        src/loginwidget.h \
         src/showinfowidget.h \
         src/traywidget.h \
 

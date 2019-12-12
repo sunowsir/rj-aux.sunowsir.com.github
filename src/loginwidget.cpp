@@ -1,6 +1,6 @@
-#include "authwidget.h"
+#include "loginwidget.h"
 
-authWidget::authWidget( DMainWindow *parent ) : QWidget( parent )
+loginWidget::loginWidget( DMainWindow *parent ) : QWidget( parent )
 {
     
     this->settings = new QSettings( DApplication::applicationDirPath() + "/Config.ini", QSettings::IniFormat );
@@ -65,17 +65,33 @@ authWidget::authWidget( DMainWindow *parent ) : QWidget( parent )
 
     /*  password checkbox  */
     this->settings->beginGroup( "CheckBox" );
-    bool default_status = this->settings->value( "memory_checkbox" ).toInt(); 
+    bool default_mstatus = this->settings->value( "memory_checkbox" ).toInt(); 
     this->settings->endGroup();
     this->memory_checkbox = new QCheckBox( this );
     this->memory_checkbox->move( 200, 320 );
-    this->memory_checkbox->setChecked( default_status );
+    this->memory_checkbox->setChecked( default_mstatus );
 
 
     /* password checkbox label */
     this->memory_label = new DLabel( this );
     this->memory_label->setText( "记住密码" );
     this->memory_label->move( 230, 320 );
+
+
+
+    /* auto login checkbox  */
+    this->settings->beginGroup( "CheckBox" );
+    bool default_lstatus = this->settings->value( "auto_checkbox" ).toInt(); 
+    this->settings->endGroup();
+    this->auto_checkbox = new QCheckBox( this );
+    this->auto_checkbox->move( 320, 320 );
+    this->auto_checkbox->setChecked( default_lstatus );
+
+
+    /* auto login checkbox label */
+    this->auto_label = new DLabel( this );
+    this->auto_label->setText( "自动登陆" );
+    this->auto_label->move( 350, 320 );
 
 
 
@@ -110,12 +126,26 @@ authWidget::authWidget( DMainWindow *parent ) : QWidget( parent )
                       this, SLOT( getNetCardChoice( QString ) ),
                       Qt::AutoConnection );
     QWidget::connect( this->button_confirm, SIGNAL( released() ),
-                      this, SLOT( triggerauthen() ),
+                      this, SLOT( triggerlogin() ),
                       Qt::AutoConnection );
+    
+    if ( default_lstatus ) {
+        triggerlogin();
+    }
 
 }
 
-authWidget::~authWidget() {
+loginWidget::~loginWidget() {
+    /* save memory password checkbox status.  */
+    this->settings->beginGroup("CheckBox");
+    this->settings->setValue("memory_checkbox", this->memory_checkbox->checkState());
+    this->settings->endGroup();
+
+    /* save auto login checkbox status.  */
+    this->settings->beginGroup("CheckBox");
+    this->settings->setValue("auto_checkbox", this->auto_checkbox->checkState());
+    this->settings->endGroup();
+
     if (this->rund_status) {
         if ( this->process != nullptr ) {
             runProOnce( "./rjsupplicant", QStringList() << "-q" );
@@ -127,14 +157,10 @@ authWidget::~authWidget() {
 
 
 
-void authWidget::triggerauthen() {
+void loginWidget::triggerlogin() {
 
     if (!this->rund_status) this->rund_status = true;
     
-    /* save checkbox status.  */
-    this->settings->beginGroup("CheckBox");
-    this->settings->setValue("memory_checkbox", this->memory_checkbox->checkState());
-    this->settings->endGroup();
 
     this->ShowInfoMaster->clear();
 
@@ -156,7 +182,7 @@ void authWidget::triggerauthen() {
 
     if ( this->account != this->default_account ||
          this->password != this->default_password  ) {
-        if ( this->getCheckStatus() ) {
+        if ( this->getMCheckStatus() ) {
             this->pro_args.append( QStringList() << "-S" << "1" );
         }
         this->pro_args.append(QStringList()<< "-p" << this->password);
@@ -180,7 +206,7 @@ void authWidget::triggerauthen() {
 }
 
 
-QString authWidget::runProOnce( QString pro_name, QStringList arg ) {
+QString loginWidget::runProOnce( QString pro_name, QStringList arg ) {
 
     QString ret;
 
@@ -200,7 +226,7 @@ QString authWidget::runProOnce( QString pro_name, QStringList arg ) {
     return ret;
 }
 
-void authWidget::RefreshNetCard() {
+void loginWidget::RefreshNetCard() {
 
     this->netcard.clear();
     this->netcard_list.clear();
@@ -225,8 +251,12 @@ void authWidget::RefreshNetCard() {
 
 }
 
-bool authWidget::getCheckStatus() {
+bool loginWidget::getMCheckStatus() {
     return this->memory_checkbox->checkState();
+}
+
+bool loginWidget::getLCheckStatus() {
+    return this->auto_checkbox->checkState();
 }
 
 
@@ -234,7 +264,7 @@ bool authWidget::getCheckStatus() {
 
 /* slot */
 
-void authWidget::getProOutput() {
+void loginWidget::getProOutput() {
 
     QString retStr = QString::fromLocal8Bit(
                 process->readAllStandardOutput() ).replace(QString("\n"), QString(""));
@@ -252,7 +282,7 @@ void authWidget::getProOutput() {
     }
 }
 
-void authWidget::getProErrout() {
+void loginWidget::getProErrout() {
 
     QString errStr = process->readAllStandardError().data();
     if ( !QRegExp( "\\s*" ).exactMatch( errStr ) &&
@@ -265,15 +295,15 @@ void authWidget::getProErrout() {
 }
 
 
-void authWidget::getAccountInput( const QString& inputstr ) {
+void loginWidget::getAccountInput( const QString& inputstr ) {
     this->account = inputstr;
 }
 
-void authWidget::getPasswordInput( const QString& inputstr ) {
+void loginWidget::getPasswordInput( const QString& inputstr ) {
     this->password = inputstr;
 }
 
-void authWidget::getNetCardChoice( const QString& choice_str ) {
+void loginWidget::getNetCardChoice( const QString& choice_str ) {
     this->netcard = choice_str;
 }
 

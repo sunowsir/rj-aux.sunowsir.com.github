@@ -8,7 +8,7 @@ MainWindow::MainWindow( QWidget *parent )
 
     this->resize( 640, 540 );
 
-    this->w = new authWidget( this );
+    this->w = new loginWidget( this );
     // this->resize(this->w->size()); //设置窗口大小
     setCentralWidget( this->w );
 
