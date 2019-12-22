@@ -279,8 +279,9 @@ void loginWidget::getProOutput() {
         // restart network;
         runProOnce( "systemctl", QStringList() << "restart" << "NetworkManager.service" );
         // this->ShowInfoMaster->setText( retStr );
+        
         this->parent->hide();
-        QMessageBox::information( nullptr, "登录成功", "登录面板已隐藏到托盘" );
+        // QMessageBox::information( nullptr, "登录成功", "登录面板已隐藏到托盘" );
     }
 }
 
