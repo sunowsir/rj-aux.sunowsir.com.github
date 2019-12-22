@@ -136,16 +136,6 @@ loginWidget::loginWidget( DMainWindow *parent ) : QWidget( parent )
 }
 
 loginWidget::~loginWidget() {
-    /* save memory password checkbox status.  */
-    this->settings->beginGroup("CheckBox");
-    this->settings->setValue("memory_checkbox", this->memory_checkbox->checkState());
-    this->settings->endGroup();
-
-    /* save auto login checkbox status.  */
-    this->settings->beginGroup("CheckBox");
-    this->settings->setValue("auto_checkbox", this->auto_checkbox->checkState());
-    this->settings->endGroup();
-
     if (this->rund_status) {
         if ( this->process != nullptr ) {
             runProOnce( "./rjsupplicant", QStringList() << "-q" );
@@ -202,7 +192,19 @@ void loginWidget::triggerlogin() {
                       this, SLOT( getProOutput() ) );
     // QObject::connect( this->process, SIGNAL( readyReadStandardError() ),
     //                   this, SLOT( getProErrout() ) );
+    //
     
+
+    /* save memory password checkbox status.  */
+    this->settings->beginGroup("CheckBox");
+    this->settings->setValue("memory_checkbox", this->memory_checkbox->checkState());
+    this->settings->endGroup();
+
+    /* save auto login checkbox status.  */
+    this->settings->beginGroup("CheckBox");
+    this->settings->setValue("auto_checkbox", this->auto_checkbox->checkState());
+    this->settings->endGroup();
+
 }
 
 
