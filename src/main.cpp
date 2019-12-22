@@ -1,5 +1,8 @@
+#include <QString>
+
 #include <DApplication>
 #include <DWidgetUtil>
+
 #include "mainwindow.h"
 
 
@@ -14,7 +17,7 @@ int main(int argc, char *argv[])
     a.loadTranslator();
     a.setOrganizationName("deepin");
     a.setApplicationVersion(DApplication::buildVersion("2.4"));
-    a.setApplicationName("锐捷linux有线认证GUI辅助");
+    a.setApplicationName("rj-aux");
 
     a.setWindowIcon(QIcon(":/image/resource/icon.png"));
 
