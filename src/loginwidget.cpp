@@ -280,8 +280,8 @@ void loginWidget::getProOutput() {
         runProOnce( "systemctl", QStringList() << "restart" << "NetworkManager.service" );
         // this->ShowInfoMaster->setText( retStr );
         
+        QMessageBox::information( nullptr, "登录成功", "登录面板已隐藏到托盘" );
         this->parent->hide();
-        // QMessageBox::information( nullptr, "登录成功", "登录面板已隐藏到托盘" );
     }
 }
 
