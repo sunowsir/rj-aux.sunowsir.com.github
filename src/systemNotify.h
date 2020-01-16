@@ -22,6 +22,8 @@ signals:
 public slots:
 
 private : 
+    QList<QVariant> arg;
+	
 	void run();
 };
 
