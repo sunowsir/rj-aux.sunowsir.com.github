@@ -4,35 +4,33 @@ QT += widgets
 QT += core
 QT += gui
 QT += network
+QT += dbus
 
 TARGET = rj-aux
 TEMPLATE = app
 
 DEFINES += QT_DEPRECATED_WARNINGS
 
-
 SOURCES += \
-        src/main.cpp \
-        src/mainwindow.cpp \
-        src/loginwidget.cpp \
-        src/showinfowidget.cpp \
-        src/traywidget.cpp
+		src/main.cpp \
+		src/mainwindow.cpp \
+		src/loginwidget.cpp \
+		src/showinfowidget.cpp \
+		src/traywidget.cpp \
+		src/systemNotify.cpp
 
 HEADERS += \
-        src/mainwindow.h \
-        src/loginwidget.h \
-        src/showinfowidget.h \
-        src/traywidget.h \
+       src/mainwindow.h \
+       src/loginwidget.h \
+       src/showinfowidget.h \
+       src/traywidget.h \
+		src/systemNotify.h
 
+CONFIG += link_pkgconfig c++11 console app_bundle
 
-CONFIG += link_pkgconfig
-
-CONFIG += c++11
-
-PKGCONFIG += dtkwidget
-
-DISTFILES +=
+PKGCONFIG += dtkwidget dframeworkdbus dbus-1 dbusextended-qt5 dbus-glib-1
 
 RESOURCES += \
     image.qrc \
+
 

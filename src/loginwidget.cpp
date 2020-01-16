@@ -1,5 +1,6 @@
 #include "loginwidget.h"
 
+
 loginWidget::loginWidget( DMainWindow *parent ) : QWidget( parent )
 {
     
@@ -275,13 +276,17 @@ void loginWidget::getProOutput() {
     this->ShowInfoMaster->append( retStr );
 
 
-    if ( retStr.contains( "成功" ) ) {
+    if ( retStr.contains( "失败" ) ) {
         // restart network;
-        runProOnce( "systemctl", QStringList() << "restart" << "NetworkManager.service" );
+		runProOnce( "systemctl", QStringList() << "restart" << "NetworkManager.service" );
         // this->ShowInfoMaster->setText( retStr );
         
-        QMessageBox::information( nullptr, "登录成功", "登录面板已隐藏到托盘" );
-        this->parent->hide();
+        // QMessageBox::information( nullptr, "登录成功", "登录面板已隐藏到托盘" );
+		SystemNotify notify;
+		notify.start();
+		notify.wait();
+
+		this->parent->hide();
     }
 }
 
@@ -309,7 +314,4 @@ void loginWidget::getPasswordInput( const QString& inputstr ) {
 void loginWidget::getNetCardChoice( const QString& choice_str ) {
     this->netcard = choice_str;
 }
-
-
-
 

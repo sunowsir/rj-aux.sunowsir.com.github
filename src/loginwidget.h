@@ -25,6 +25,7 @@
 #include <dpasswordedit.h>
 
 #include "showinfowidget.h"
+#include "systemNotify.h"
 
 DWIDGET_USE_NAMESPACE
 
