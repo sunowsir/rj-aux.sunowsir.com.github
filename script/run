@@ -1,9 +1,0 @@
-#!/bin/bash
-
-
-if [[ "$(ps -aux | grep -v 'grep' | grep 'rj-aux')x" == "x" ]];
-then
-    pkexec /opt/rjsupplicant-aux/rj-aux
-fi
-
-

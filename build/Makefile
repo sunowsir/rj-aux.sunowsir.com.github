@@ -12,10 +12,10 @@ MAKEFILE      = Makefile
 
 CC            = gcc
 CXX           = g++
-DEFINES       = -DQT_DEPRECATED_WARNINGS -DQT_DBUS_LIB -DQT_CORE_LIB -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_DBUS_LIB -DQT_CORE_LIB
+DEFINES       = -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_DBUS_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -O2 -Wall -W -D_REENTRANT -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -O2 -std=gnu++11 -Wall -W -D_REENTRANT -fPIC $(DEFINES)
-INCPATH       = -I../../rj-aux -I. -isystem /usr/include/libdtk-5.0.13/DWidget -isystem /usr/include/libdtk-5.0.13/DGui -isystem /usr/include/libdtk-5.0.13/DCore -isystem /usr/include/libdframeworkdbus-2.0 -isystem /usr/include/dbus-1.0 -I/usr/lib/x86_64-linux-gnu/dbus-1.0/include -isystem /usr/include/x86_64-linux-gnu/qt5/QtDBus -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -isystem /usr/include/DBusExtended -isystem /usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtNetwork -I. -isystem /usr/include/libdrm -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++
+INCPATH       = -I../../rj-aux -I. -isystem /usr/include/libdtk-5.0.13/DWidget -isystem /usr/include/libdtk-5.0.13/DGui -isystem /usr/include/libdtk-5.0.13/DCore -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtNetwork -isystem /usr/include/x86_64-linux-gnu/qt5/QtDBus -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -I. -isystem /usr/include/libdrm -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++
 QMAKE         = /usr/lib/qt5/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -35,10 +35,10 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = rj-aux1.0.0
-DISTDIR = /home/sun/Code/1.Github/1.MyRepo/rj-aux/build/.tmp/rj-aux1.0.0
+DISTDIR = /home/sun/Code/1.Github/rj-aux/build/.tmp/rj-aux1.0.0
 LINK          = g++
 LFLAGS        = -Wl,-O1
-LIBS          = $(SUBLIBS) -ldtkwidget -ldtkgui -ldtkcore -ldframeworkdbus -ldbusextended-qt5 -ldbus-glib-1 -ldbus-1 -lgobject-2.0 -lglib-2.0 -lQt5Widgets -lQt5Gui -lQt5Network -lQt5DBus -lQt5Core -lGL -lpthread 
+LIBS          = $(SUBLIBS) -ldtkwidget -ldtkgui -ldtkcore -lQt5Widgets -lQt5Gui -lQt5Network -lQt5DBus -lQt5Core -lGL -lpthread 
 AR            = ar cqs
 RANLIB        = 
 SED           = sed
@@ -54,25 +54,21 @@ SOURCES       = ../src/main.cpp \
 		../src/mainwindow.cpp \
 		../src/loginwidget.cpp \
 		../src/showinfowidget.cpp \
-		../src/traywidget.cpp \
-		../src/systemNotify.cpp qrc_image.cpp \
+		../src/traywidget.cpp qrc_image.cpp \
 		moc_mainwindow.cpp \
 		moc_loginwidget.cpp \
 		moc_showinfowidget.cpp \
-		moc_traywidget.cpp \
-		moc_systemNotify.cpp
+		moc_traywidget.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
 		loginwidget.o \
 		showinfowidget.o \
 		traywidget.o \
-		systemNotify.o \
 		qrc_image.o \
 		moc_mainwindow.o \
 		moc_loginwidget.o \
 		moc_showinfowidget.o \
-		moc_traywidget.o \
-		moc_systemNotify.o
+		moc_traywidget.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/linux.conf \
@@ -94,7 +90,6 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_dtkcore.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_dtkgui.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_dtkwidget.pri \
-		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_dtkwm.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_edid_support_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_egl_support_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_eglfs_kms_support_private.pri \
@@ -119,10 +114,6 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_platformcompositor_support_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_printsupport.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_printsupport_private.pri \
-		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_qml.pri \
-		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_qmltest.pri \
-		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_quick.pri \
-		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_quickwidgets.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_service_support_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_sql.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_sql_private.pri \
@@ -167,13 +158,11 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		../../rj-aux.pro ../src/mainwindow.h \
 		../src/loginwidget.h \
 		../src/showinfowidget.h \
-		../src/traywidget.h \
-		../src/systemNotify.h ../src/main.cpp \
+		../src/traywidget.h ../src/main.cpp \
 		../src/mainwindow.cpp \
 		../src/loginwidget.cpp \
 		../src/showinfowidget.cpp \
-		../src/traywidget.cpp \
-		../src/systemNotify.cpp
+		../src/traywidget.cpp
 QMAKE_TARGET  = rj-aux
 DESTDIR       = 
 TARGET        = rj-aux
@@ -206,7 +195,6 @@ Makefile: ../rj-aux.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.co
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_dtkcore.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_dtkgui.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_dtkwidget.pri \
-		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_dtkwm.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_edid_support_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_egl_support_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_eglfs_kms_support_private.pri \
@@ -231,10 +219,6 @@ Makefile: ../rj-aux.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.co
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_platformcompositor_support_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_printsupport.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_printsupport_private.pri \
-		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_qml.pri \
-		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_qmltest.pri \
-		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_quick.pri \
-		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_quickwidgets.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_service_support_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_sql.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_sql_private.pri \
@@ -278,11 +262,11 @@ Makefile: ../rj-aux.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.co
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
 		../rj-aux.pro \
 		../image.qrc \
-		/usr/lib/x86_64-linux-gnu/libQt5DBus.prl \
-		/usr/lib/x86_64-linux-gnu/libQt5Core.prl \
 		/usr/lib/x86_64-linux-gnu/libQt5Widgets.prl \
 		/usr/lib/x86_64-linux-gnu/libQt5Gui.prl \
-		/usr/lib/x86_64-linux-gnu/libQt5Network.prl
+		/usr/lib/x86_64-linux-gnu/libQt5Network.prl \
+		/usr/lib/x86_64-linux-gnu/libQt5DBus.prl \
+		/usr/lib/x86_64-linux-gnu/libQt5Core.prl
 	$(QMAKE) -o Makefile ../rj-aux.pro
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf:
@@ -305,7 +289,6 @@ Makefile: ../rj-aux.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.co
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_dtkcore.pri:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_dtkgui.pri:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_dtkwidget.pri:
-/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_dtkwm.pri:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_edid_support_private.pri:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_egl_support_private.pri:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_eglfs_kms_support_private.pri:
@@ -330,10 +313,6 @@ Makefile: ../rj-aux.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.co
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_platformcompositor_support_private.pri:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_printsupport.pri:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_printsupport_private.pri:
-/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_qml.pri:
-/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_qmltest.pri:
-/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_quick.pri:
-/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_quickwidgets.pri:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_service_support_private.pri:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_sql.pri:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_sql_private.pri:
@@ -377,11 +356,11 @@ Makefile: ../rj-aux.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.co
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf:
 ../rj-aux.pro:
 ../image.qrc:
-/usr/lib/x86_64-linux-gnu/libQt5DBus.prl:
-/usr/lib/x86_64-linux-gnu/libQt5Core.prl:
 /usr/lib/x86_64-linux-gnu/libQt5Widgets.prl:
 /usr/lib/x86_64-linux-gnu/libQt5Gui.prl:
 /usr/lib/x86_64-linux-gnu/libQt5Network.prl:
+/usr/lib/x86_64-linux-gnu/libQt5DBus.prl:
+/usr/lib/x86_64-linux-gnu/libQt5Core.prl:
 qmake: FORCE
 	@$(QMAKE) -o Makefile ../rj-aux.pro
 
@@ -398,8 +377,8 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../image.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../src/mainwindow.h ../src/loginwidget.h ../src/showinfowidget.h ../src/traywidget.h ../src/systemNotify.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../src/main.cpp ../src/mainwindow.cpp ../src/loginwidget.cpp ../src/showinfowidget.cpp ../src/traywidget.cpp ../src/systemNotify.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../src/mainwindow.h ../src/loginwidget.h ../src/showinfowidget.h ../src/traywidget.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../src/main.cpp ../src/mainwindow.cpp ../src/loginwidget.cpp ../src/showinfowidget.cpp ../src/traywidget.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -438,39 +417,32 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 	g++ -pipe -O2 -std=gnu++11 -Wall -W -dM -E -o moc_predefs.h /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_mainwindow.cpp moc_loginwidget.cpp moc_showinfowidget.cpp moc_traywidget.cpp moc_systemNotify.cpp
+compiler_moc_header_make_all: moc_mainwindow.cpp moc_loginwidget.cpp moc_showinfowidget.cpp moc_traywidget.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp moc_loginwidget.cpp moc_showinfowidget.cpp moc_traywidget.cpp moc_systemNotify.cpp
+	-$(DEL_FILE) moc_mainwindow.cpp moc_loginwidget.cpp moc_showinfowidget.cpp moc_traywidget.cpp
 moc_mainwindow.cpp: ../src/loginwidget.h \
 		../src/showinfowidget.h \
-		../src/systemNotify.h \
 		../src/traywidget.h \
 		../src/mainwindow.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/sun/Code/1.Github/1.MyRepo/rj-aux/build/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/sun/Code/1.Github/1.MyRepo/rj-aux -I/usr/include/libdtk-5.0.13/DWidget -I/usr/include/libdtk-5.0.13/DGui -I/usr/include/libdtk-5.0.13/DCore -I/usr/include/libdframeworkdbus-2.0 -I/usr/include/dbus-1.0 -I/usr/lib/x86_64-linux-gnu/dbus-1.0/include -I/usr/include/x86_64-linux-gnu/qt5/QtDBus -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/DBusExtended -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I. -I/usr/include/c++/8 -I/usr/include/x86_64-linux-gnu/c++/8 -I/usr/include/c++/8/backward -I/usr/lib/gcc/x86_64-linux-gnu/8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../src/mainwindow.h -o moc_mainwindow.cpp
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/sun/Code/1.Github/rj-aux/build/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/sun/Code/1.Github/rj-aux -I/usr/include/libdtk-5.0.13/DWidget -I/usr/include/libdtk-5.0.13/DGui -I/usr/include/libdtk-5.0.13/DCore -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I/usr/include/x86_64-linux-gnu/qt5/QtDBus -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/8 -I/usr/include/x86_64-linux-gnu/c++/8 -I/usr/include/c++/8/backward -I/usr/lib/gcc/x86_64-linux-gnu/8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../src/mainwindow.h -o moc_mainwindow.cpp
 
 moc_loginwidget.cpp: ../src/showinfowidget.h \
-		../src/systemNotify.h \
 		../src/loginwidget.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/sun/Code/1.Github/1.MyRepo/rj-aux/build/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/sun/Code/1.Github/1.MyRepo/rj-aux -I/usr/include/libdtk-5.0.13/DWidget -I/usr/include/libdtk-5.0.13/DGui -I/usr/include/libdtk-5.0.13/DCore -I/usr/include/libdframeworkdbus-2.0 -I/usr/include/dbus-1.0 -I/usr/lib/x86_64-linux-gnu/dbus-1.0/include -I/usr/include/x86_64-linux-gnu/qt5/QtDBus -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/DBusExtended -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I. -I/usr/include/c++/8 -I/usr/include/x86_64-linux-gnu/c++/8 -I/usr/include/c++/8/backward -I/usr/lib/gcc/x86_64-linux-gnu/8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../src/loginwidget.h -o moc_loginwidget.cpp
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/sun/Code/1.Github/rj-aux/build/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/sun/Code/1.Github/rj-aux -I/usr/include/libdtk-5.0.13/DWidget -I/usr/include/libdtk-5.0.13/DGui -I/usr/include/libdtk-5.0.13/DCore -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I/usr/include/x86_64-linux-gnu/qt5/QtDBus -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/8 -I/usr/include/x86_64-linux-gnu/c++/8 -I/usr/include/c++/8/backward -I/usr/lib/gcc/x86_64-linux-gnu/8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../src/loginwidget.h -o moc_loginwidget.cpp
 
 moc_showinfowidget.cpp: ../src/showinfowidget.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/sun/Code/1.Github/1.MyRepo/rj-aux/build/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/sun/Code/1.Github/1.MyRepo/rj-aux -I/usr/include/libdtk-5.0.13/DWidget -I/usr/include/libdtk-5.0.13/DGui -I/usr/include/libdtk-5.0.13/DCore -I/usr/include/libdframeworkdbus-2.0 -I/usr/include/dbus-1.0 -I/usr/lib/x86_64-linux-gnu/dbus-1.0/include -I/usr/include/x86_64-linux-gnu/qt5/QtDBus -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/DBusExtended -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I. -I/usr/include/c++/8 -I/usr/include/x86_64-linux-gnu/c++/8 -I/usr/include/c++/8/backward -I/usr/lib/gcc/x86_64-linux-gnu/8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../src/showinfowidget.h -o moc_showinfowidget.cpp
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/sun/Code/1.Github/rj-aux/build/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/sun/Code/1.Github/rj-aux -I/usr/include/libdtk-5.0.13/DWidget -I/usr/include/libdtk-5.0.13/DGui -I/usr/include/libdtk-5.0.13/DCore -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I/usr/include/x86_64-linux-gnu/qt5/QtDBus -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/8 -I/usr/include/x86_64-linux-gnu/c++/8 -I/usr/include/c++/8/backward -I/usr/lib/gcc/x86_64-linux-gnu/8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../src/showinfowidget.h -o moc_showinfowidget.cpp
 
 moc_traywidget.cpp: ../src/traywidget.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/sun/Code/1.Github/1.MyRepo/rj-aux/build/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/sun/Code/1.Github/1.MyRepo/rj-aux -I/usr/include/libdtk-5.0.13/DWidget -I/usr/include/libdtk-5.0.13/DGui -I/usr/include/libdtk-5.0.13/DCore -I/usr/include/libdframeworkdbus-2.0 -I/usr/include/dbus-1.0 -I/usr/lib/x86_64-linux-gnu/dbus-1.0/include -I/usr/include/x86_64-linux-gnu/qt5/QtDBus -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/DBusExtended -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I. -I/usr/include/c++/8 -I/usr/include/x86_64-linux-gnu/c++/8 -I/usr/include/c++/8/backward -I/usr/lib/gcc/x86_64-linux-gnu/8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../src/traywidget.h -o moc_traywidget.cpp
-
-moc_systemNotify.cpp: ../src/systemNotify.h \
-		moc_predefs.h \
-		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/sun/Code/1.Github/1.MyRepo/rj-aux/build/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/sun/Code/1.Github/1.MyRepo/rj-aux -I/usr/include/libdtk-5.0.13/DWidget -I/usr/include/libdtk-5.0.13/DGui -I/usr/include/libdtk-5.0.13/DCore -I/usr/include/libdframeworkdbus-2.0 -I/usr/include/dbus-1.0 -I/usr/lib/x86_64-linux-gnu/dbus-1.0/include -I/usr/include/x86_64-linux-gnu/qt5/QtDBus -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/DBusExtended -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I. -I/usr/include/c++/8 -I/usr/include/x86_64-linux-gnu/c++/8 -I/usr/include/c++/8/backward -I/usr/lib/gcc/x86_64-linux-gnu/8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../src/systemNotify.h -o moc_systemNotify.cpp
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/sun/Code/1.Github/rj-aux/build/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/sun/Code/1.Github/rj-aux -I/usr/include/libdtk-5.0.13/DWidget -I/usr/include/libdtk-5.0.13/DGui -I/usr/include/libdtk-5.0.13/DCore -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I/usr/include/x86_64-linux-gnu/qt5/QtDBus -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/8 -I/usr/include/x86_64-linux-gnu/c++/8 -I/usr/include/c++/8/backward -I/usr/lib/gcc/x86_64-linux-gnu/8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../src/traywidget.h -o moc_traywidget.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -491,20 +463,17 @@ compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_heade
 main.o: ../src/main.cpp ../src/mainwindow.h \
 		../src/loginwidget.h \
 		../src/showinfowidget.h \
-		../src/systemNotify.h \
 		../src/traywidget.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../src/main.cpp
 
 mainwindow.o: ../src/mainwindow.cpp ../src/mainwindow.h \
 		../src/loginwidget.h \
 		../src/showinfowidget.h \
-		../src/systemNotify.h \
 		../src/traywidget.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../src/mainwindow.cpp
 
 loginwidget.o: ../src/loginwidget.cpp ../src/loginwidget.h \
-		../src/showinfowidget.h \
-		../src/systemNotify.h
+		../src/showinfowidget.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o loginwidget.o ../src/loginwidget.cpp
 
 showinfowidget.o: ../src/showinfowidget.cpp ../src/showinfowidget.h
@@ -512,9 +481,6 @@ showinfowidget.o: ../src/showinfowidget.cpp ../src/showinfowidget.h
 
 traywidget.o: ../src/traywidget.cpp ../src/traywidget.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o traywidget.o ../src/traywidget.cpp
-
-systemNotify.o: ../src/systemNotify.cpp ../src/systemNotify.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o systemNotify.o ../src/systemNotify.cpp
 
 qrc_image.o: qrc_image.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_image.o qrc_image.cpp
@@ -530,9 +496,6 @@ moc_showinfowidget.o: moc_showinfowidget.cpp
 
 moc_traywidget.o: moc_traywidget.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_traywidget.o moc_traywidget.cpp
-
-moc_systemNotify.o: moc_systemNotify.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_systemNotify.o moc_systemNotify.cpp
 
 ####### Install
 

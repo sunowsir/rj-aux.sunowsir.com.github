@@ -15,6 +15,7 @@
 #include <QMessageBox>
 #include <QSystemTrayIcon>
 #include <QtNetwork/QNetworkInterface>
+#include <QProcessEnvironment>
 
 
 #include <dlabel.h>
@@ -25,7 +26,6 @@
 #include <dpasswordedit.h>
 
 #include "showinfowidget.h"
-#include "systemNotify.h"
 
 DWIDGET_USE_NAMESPACE
 

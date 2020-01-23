@@ -139,7 +139,7 @@ loginWidget::loginWidget( DMainWindow *parent ) : QWidget( parent )
 loginWidget::~loginWidget() {
     if (this->rund_status) {
         if ( this->process != nullptr ) {
-            runProOnce( "./rjsupplicant", QStringList() << "-q" );
+            runProOnce( "./rjsupplicant.start", QStringList() << "-q" );
         }
         // restart network;
         runProOnce( "systemctl", QStringList() << "restart" << "NetworkManager.service" );
@@ -158,7 +158,7 @@ void loginWidget::triggerlogin() {
     if ( this->process == nullptr ) {
         this->process = new QProcess( this );
     } else {
-        runProOnce( "./rjsupplicant", QStringList() << "-q" );
+        runProOnce( "./rjsupplicant.start", QStringList() << "-q" );
         this->process->kill();
         this->process->close();
     }
@@ -180,10 +180,10 @@ void loginWidget::triggerlogin() {
     }
 
 
-    /* start run the rjsupplicant program. */
+    /* start run the rjsupplicant.start program. */
 
     this->process->setWorkingDirectory( DApplication::applicationDirPath() );
-    this->process->start( "./rjsupplicant", this->pro_args );
+    this->process->start( "./rjsupplicant.start", this->pro_args );
     this->process->waitForStarted();
 
 
@@ -276,15 +276,14 @@ void loginWidget::getProOutput() {
     this->ShowInfoMaster->append( retStr );
 
 
-    if ( retStr.contains( "失败" ) ) {
+    if ( retStr.contains( QString("成功") ) ) {
         // restart network;
-		runProOnce( "systemctl", QStringList() << "restart" << "NetworkManager.service" );
+		runProOnce( QString("systemctl"), QStringList() << "restart" << "NetworkManager.service" );
         // this->ShowInfoMaster->setText( retStr );
         
         // QMessageBox::information( nullptr, "登录成功", "登录面板已隐藏到托盘" );
-		SystemNotify notify;
-		notify.start();
-		notify.wait();
+
+		runProOnce( QString("./notify") );
 
 		this->parent->hide();
     }

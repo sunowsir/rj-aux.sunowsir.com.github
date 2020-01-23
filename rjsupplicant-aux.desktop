@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=锐捷校园网GUI辅助认证
+Exec=/opt/rjsupplicant-aux/rj-aux
+Terminal=false
+Type=Application
+Icon=rj-aux
+Comment=锐捷校园网GUI辅助
+Categories=Network;

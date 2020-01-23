@@ -17,18 +17,16 @@ SOURCES += \
 		src/loginwidget.cpp \
 		src/showinfowidget.cpp \
 		src/traywidget.cpp \
-		src/systemNotify.cpp
 
 HEADERS += \
        src/mainwindow.h \
        src/loginwidget.h \
        src/showinfowidget.h \
        src/traywidget.h \
-		src/systemNotify.h
 
 CONFIG += link_pkgconfig c++11 console app_bundle
 
-PKGCONFIG += dtkwidget dframeworkdbus dbus-1 dbusextended-qt5 dbus-glib-1
+PKGCONFIG += dtkwidget 
 
 RESOURCES += \
     image.qrc \

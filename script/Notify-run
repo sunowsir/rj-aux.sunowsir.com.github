@@ -1,8 +1,0 @@
-#!/bin/bash
-#
-#	* File      : Notify-run.sh
-#	* Author    : sunowsir
-#	* Mail      : sunowsir@163.com
-#	* Creation  : 2020年01月15日 星期三 15时07分58秒
-
-/opt/rjsupplicant-aux/notify

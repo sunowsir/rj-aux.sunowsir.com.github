@@ -63,7 +63,7 @@ void SystemNotify::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
 }
 
 QT_INIT_METAOBJECT const QMetaObject SystemNotify::staticMetaObject = {
-    { &QThread::staticMetaObject, qt_meta_stringdata_SystemNotify.data,
+    { &QObject::staticMetaObject, qt_meta_stringdata_SystemNotify.data,
       qt_meta_data_SystemNotify,  qt_static_metacall, nullptr, nullptr}
 };
 
@@ -78,12 +78,12 @@ void *SystemNotify::qt_metacast(const char *_clname)
     if (!_clname) return nullptr;
     if (!strcmp(_clname, qt_meta_stringdata_SystemNotify.stringdata0))
         return static_cast<void*>(this);
-    return QThread::qt_metacast(_clname);
+    return QObject::qt_metacast(_clname);
 }
 
 int SystemNotify::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
-    _id = QThread::qt_metacall(_c, _id, _a);
+    _id = QObject::qt_metacall(_c, _id, _a);
     return _id;
 }
 QT_WARNING_POP
