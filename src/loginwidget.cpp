@@ -314,3 +314,4 @@ void loginWidget::getNetCardChoice( const QString& choice_str ) {
     this->netcard = choice_str;
 }
 
+
