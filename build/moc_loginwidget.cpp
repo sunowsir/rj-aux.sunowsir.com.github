@@ -1,23 +1,26 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'loginwidget.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.7.1)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.14.1)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
+#include <memory>
 #include "../src/loginwidget.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'loginwidget.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.7.1. It"
+#error "This file was generated using the moc from 5.14.1. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
 
 QT_BEGIN_MOC_NAMESPACE
+QT_WARNING_PUSH
+QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_loginWidget_t {
     QByteArrayData data[8];
     char stringdata0[102];
@@ -48,7 +51,7 @@ QT_MOC_LITERAL(7, 85, 16) // "getNetCardChoice"
 static const uint qt_meta_data_loginWidget[] = {
 
  // content:
-       7,       // revision
+       8,       // revision
        0,       // classname
        0,    0, // classinfo
        6,   14, // methods
@@ -80,7 +83,7 @@ static const uint qt_meta_data_loginWidget[] = {
 void loginWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
-        loginWidget *_t = static_cast<loginWidget *>(_o);
+        auto *_t = static_cast<loginWidget *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->triggerlogin(); break;
@@ -94,10 +97,14 @@ void loginWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
     }
 }
 
-const QMetaObject loginWidget::staticMetaObject = {
-    { &QWidget::staticMetaObject, qt_meta_stringdata_loginWidget.data,
-      qt_meta_data_loginWidget,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
-};
+QT_INIT_METAOBJECT const QMetaObject loginWidget::staticMetaObject = { {
+    QMetaObject::SuperData::link<QWidget::staticMetaObject>(),
+    qt_meta_stringdata_loginWidget.data,
+    qt_meta_data_loginWidget,
+    qt_static_metacall,
+    nullptr,
+    nullptr
+} };
 
 
 const QMetaObject *loginWidget::metaObject() const
@@ -107,9 +114,9 @@ const QMetaObject *loginWidget::metaObject() const
 
 void *loginWidget::qt_metacast(const char *_clname)
 {
-    if (!_clname) return Q_NULLPTR;
+    if (!_clname) return nullptr;
     if (!strcmp(_clname, qt_meta_stringdata_loginWidget.stringdata0))
-        return static_cast<void*>(const_cast< loginWidget*>(this));
+        return static_cast<void*>(this);
     return QWidget::qt_metacast(_clname);
 }
 
@@ -129,4 +136,5 @@ int loginWidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     }
     return _id;
 }
+QT_WARNING_POP
 QT_END_MOC_NAMESPACE
