@@ -1,0 +1,7 @@
+%compile_commands.json
+-target
+armv7-linux-gnueabi
+-D__ICCARM__
+-U__GNUC__
+-U__clang__
+-isystem/usr/include/qt/QtGui/

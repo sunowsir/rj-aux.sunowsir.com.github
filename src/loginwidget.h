@@ -16,18 +16,21 @@
 #include <QSystemTrayIcon>
 #include <QtNetwork/QNetworkInterface>
 #include <QProcessEnvironment>
+#include <qlabel.h>
+#include <qlineedit.h>
+#include <qtextedit.h>
+#include <QMainWindow>
 
-
-#include <dlabel.h>
-#include <dlineedit.h>
-#include <dtextedit.h>
-#include <DMainWindow>
-#include <DApplication>
-#include <dpasswordedit.h>
+// #include <dlabel.h>
+// #include <dlineedit.h>
+// #include <dtextedit.h>
+// #include <DMainWindow>
+// #include <DApplication>
+// #include <dpasswordedit.h>
 
 #include "showinfowidget.h"
 
-DWIDGET_USE_NAMESPACE
+// DWIDGET_USE_NAMESPACE
 
 class loginWidget : public QWidget
 {
@@ -35,16 +38,16 @@ class loginWidget : public QWidget
 
     QSettings       *settings;
 
-    DMainWindow     *parent;
+    QMainWindow     *parent;
 
     /* control */
 
     QPushButton     *button_confirm;
 
-    DLabel          *memory_label;
+    QLabel          *memory_label;
     QCheckBox       *memory_checkbox;
 
-    DLabel          *auto_label;
+    QLabel          *auto_label;
     QCheckBox       *auto_checkbox;
 
     // MemoryWidget    *memoryMaster;
@@ -58,18 +61,18 @@ class loginWidget : public QWidget
 
     /* Input infomation get */
 
-    DLabel          *account_label;
-    DLabel          *password_label;
+    QLabel          *account_label;
+    QLabel          *password_label;
 
-    DLineEdit       *account_input;
-    DPasswordEdit   *password_input;
+    QLineEdit       *account_input;
+    QLineEdit       *password_input;
 
     QString         account;
     QString         default_account;
     QString         password;
     QString         default_password;
 
-    DLabel          *netcard_label;
+    QLabel          *netcard_label;
     QComboBox       *netcard_combox;
 
     /* information save */
@@ -86,7 +89,7 @@ class loginWidget : public QWidget
 signals:
 
 public:
-    explicit loginWidget(DMainWindow *parent = nullptr);
+    explicit loginWidget(QMainWindow *parent = nullptr);
     ~loginWidget();
 
 public slots:

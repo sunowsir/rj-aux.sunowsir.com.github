@@ -3,7 +3,7 @@
 DWIDGET_USE_NAMESPACE
 
 MainWindow::MainWindow( QWidget *parent )
-    : DMainWindow( parent )
+    : QMainWindow( parent )
 {
 
     this->resize( 640, 540 );

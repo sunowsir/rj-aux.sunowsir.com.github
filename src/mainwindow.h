@@ -12,9 +12,7 @@
 #include "loginwidget.h"
 #include "traywidget.h"
 
-DWIDGET_USE_NAMESPACE
-
-class MainWindow : public DMainWindow
+class MainWindow : public QMainWindow
 {
     Q_OBJECT
     loginWidget  *w;

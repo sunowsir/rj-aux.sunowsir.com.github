@@ -1,11 +1,11 @@
 #include "loginwidget.h"
 
 
-loginWidget::loginWidget( DMainWindow *parent ) : QWidget( parent )
+loginWidget::loginWidget( QMainWindow *parent ) : QWidget( parent )
 {
     
-    this->settings = new QSettings( DApplication::applicationDirPath() + "/Config.ini", QSettings::IniFormat );
-    qDebug() << DApplication::applicationDirPath() + "/Config.ini";
+    this->settings = new QSettings( QCoreApplication::applicationDirPath() + "/Config.ini", QSettings::IniFormat );
+    qDebug() << QCoreApplication::applicationDirPath() + "/Config.ini";
 
     this->parent = parent;
 
@@ -15,14 +15,14 @@ loginWidget::loginWidget( DMainWindow *parent ) : QWidget( parent )
 
     /* account label */
 
-    this->account_label = new DLabel( this );
+    this->account_label = new QLabel(this);
     this->account_label->setText( "账号" );
     this->account_label->move( 200, 150 );
 
 
     /* account line edit  */
 
-    this->account_input = new DLineEdit( this );
+    this->account_input = new QLineEdit( this );
     this->account_input->setText( this->account = this->default_account );
     // this->lineedit_acco_num->setPlaceholderText("please input account");
     this->account_input->move( 260, 145 );
@@ -30,14 +30,15 @@ loginWidget::loginWidget( DMainWindow *parent ) : QWidget( parent )
 
     /* password label */
 
-    this->password_label = new DLabel( this );
+    this->password_label = new QLabel( this );
     this->password_label->setText( "密码" );
     this->password_label->move( 200, 210 );
 
 
     /* password line edit */
 
-    this->password_input = new DPasswordEdit( this );
+    this->password_input = new QLineEdit( this );
+    this->password_input->setEchoMode(QLineEdit::Password);
     this->password_input->setText( this->password = default_password );
     // this->passwordedit_pass_num->setPlaceholderText("please input password");
     this->password_input->move( 260, 205 );
@@ -51,7 +52,7 @@ loginWidget::loginWidget( DMainWindow *parent ) : QWidget( parent )
     RefreshNetCard();
 
     /* net card label */
-    this->netcard_label = new DLabel( this );
+    this->netcard_label = new QLabel( this );
     this->netcard_label->setText( "网卡" );
     this->netcard_label->move( 200, 270 );
 
@@ -74,7 +75,7 @@ loginWidget::loginWidget( DMainWindow *parent ) : QWidget( parent )
 
 
     /* password checkbox label */
-    this->memory_label = new DLabel( this );
+    this->memory_label = new QLabel( this );
     this->memory_label->setText( "记住密码" );
     this->memory_label->move( 230, 320 );
 
@@ -90,7 +91,7 @@ loginWidget::loginWidget( DMainWindow *parent ) : QWidget( parent )
 
 
     /* auto login checkbox label */
-    this->auto_label = new DLabel( this );
+    this->auto_label = new QLabel( this );
     this->auto_label->setText( "自动登陆" );
     this->auto_label->move( 350, 320 );
 
@@ -182,7 +183,7 @@ void loginWidget::triggerlogin() {
 
     /* start run the rjsupplicant.start program. */
 
-    this->process->setWorkingDirectory( DApplication::applicationDirPath() );
+    this->process->setWorkingDirectory( QCoreApplication::applicationDirPath() );
     this->process->start( "./rjsupplicant.start", this->pro_args );
     this->process->waitForStarted();
 
@@ -219,7 +220,7 @@ QString loginWidget::runProOnce( QString pro_name, QStringList arg ) {
     }
 
     QProcess pro;
-    pro.setWorkingDirectory( DApplication::applicationDirPath() );
+    pro.setWorkingDirectory( QCoreApplication::applicationDirPath() );
     pro.start( pro_name, arg );
     pro.waitForFinished();
     ret = pro.readAllStandardOutput();
