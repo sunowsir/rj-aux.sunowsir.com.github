@@ -26,7 +26,6 @@ HEADERS += \
 
 CONFIG += link_pkgconfig c++11 console app_bundle
 
-PKGCONFIG += dtkwidget 
 
 RESOURCES += \
     image.qrc \

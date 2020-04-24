@@ -1,7 +1,5 @@
 #include "mainwindow.h"
 
-DWIDGET_USE_NAMESPACE
-
 MainWindow::MainWindow( QWidget *parent )
     : QMainWindow( parent )
 {

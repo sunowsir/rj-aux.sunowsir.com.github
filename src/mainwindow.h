@@ -5,7 +5,7 @@
 #include <QtGui>
 #include <QWidget>
 
-#include <DMainWindow>
+#include <QMainWindow>
 
 #include <QMessageBox>
 
