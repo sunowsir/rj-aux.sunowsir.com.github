@@ -15,8 +15,11 @@ class TrayWidget : public QWidget
     QMenu           *menu;
 
     QAction         *show_act;
-    QAction         *exit_act;
     QAction         *hide_act;
+    QAction 		*core_act;
+    QAction 		*about_act;
+    QAction         *exit_act;
+
 
 public:
     explicit TrayWidget(QWidget *parent = nullptr);
@@ -24,7 +27,8 @@ public:
 signals:
 
 public slots:
-
+    void load_core();
+    void show_about();
 };
 
 #endif // TRAYWIDGET_H

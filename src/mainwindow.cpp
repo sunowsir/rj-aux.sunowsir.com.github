@@ -1,16 +1,18 @@
 #include "mainwindow.h"
 
-MainWindow::MainWindow( QWidget *parent )
-    : QMainWindow( parent )
+MainWindow::MainWindow(QWidget *parent)
+    : QMainWindow(parent)
 {
 
-    this->resize( 640, 540 );
+    this->setFixedSize(640, 540);
+    this->setWindowTitle(tr("锐捷校园网有线认证linux辅助客户端"));
+    this->setWindowIcon(QIcon(QString(":/image/resource/icon.png")));
 
-    this->w = new loginWidget( this );
+    this->w = new loginWidget(this);
     // this->resize(this->w->size()); //设置窗口大小
-    setCentralWidget( this->w );
+    setCentralWidget(this->w);
 
-    this->t = new TrayWidget( this );
+    this->t = new TrayWidget(this);
 
 }
 
@@ -23,8 +25,8 @@ MainWindow::~MainWindow() {
 
 /* slot */
 
-void MainWindow::trayAction( QSystemTrayIcon::ActivationReason reason ) {
-    if ( reason == QSystemTrayIcon::Trigger ) {
+void MainWindow::trayAction(QSystemTrayIcon::ActivationReason reason) {
+    if (reason == QSystemTrayIcon::Trigger) {
         this->showNormal();
     }
 }

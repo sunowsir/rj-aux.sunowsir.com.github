@@ -12,17 +12,17 @@ TEMPLATE = app
 DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
-		src/main.cpp \
-		src/mainwindow.cpp \
-		src/loginwidget.cpp \
-		src/showinfowidget.cpp \
-		src/traywidget.cpp \
+	src/main.cpp \
+	src/mainwindow.cpp \
+	src/loginwidget.cpp \
+	src/traywidget.cpp \
+	src/showinfowidget.cpp \
 
 HEADERS += \
-       src/mainwindow.h \
-       src/loginwidget.h \
-       src/showinfowidget.h \
-       src/traywidget.h \
+    src/mainwindow.h \
+    src/loginwidget.h \
+	src/traywidget.h \
+	src/showinfowidget.h \
 
 CONFIG += link_pkgconfig c++11 console app_bundle
 

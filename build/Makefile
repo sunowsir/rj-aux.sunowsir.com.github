@@ -55,21 +55,21 @@ OBJECTS_DIR   = ./
 SOURCES       = ../src/main.cpp \
 		../src/mainwindow.cpp \
 		../src/loginwidget.cpp \
-		../src/showinfowidget.cpp \
+		../src/settingwindow.cpp \
 		../src/traywidget.cpp qrc_image.cpp \
 		moc_mainwindow.cpp \
 		moc_loginwidget.cpp \
-		moc_showinfowidget.cpp \
+		moc_settingwindow.cpp \
 		moc_traywidget.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
 		loginwidget.o \
-		showinfowidget.o \
+		settingwindow.o \
 		traywidget.o \
 		qrc_image.o \
 		moc_mainwindow.o \
 		moc_loginwidget.o \
-		moc_showinfowidget.o \
+		moc_settingwindow.o \
 		moc_traywidget.o
 DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		/usr/lib/qt/mkspecs/common/unix.conf \
@@ -351,6 +351,7 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		/usr/lib/qt/mkspecs/features/qt_config.prf \
 		/usr/lib/qt/mkspecs/linux-g++/qmake.conf \
 		/usr/lib/qt/mkspecs/features/spec_post.prf \
+		../.qmake.stash \
 		/usr/lib/qt/mkspecs/features/exclusive_builds.prf \
 		/usr/lib/qt/mkspecs/features/toolchain.prf \
 		/usr/lib/qt/mkspecs/features/default_pre.prf \
@@ -376,11 +377,11 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		/usr/lib/qt/mkspecs/features/lex.prf \
 		../../rj-aux.pro ../src/mainwindow.h \
 		../src/loginwidget.h \
-		../src/showinfowidget.h \
+		../src/settingwindow.h \
 		../src/traywidget.h ../src/main.cpp \
 		../src/mainwindow.cpp \
 		../src/loginwidget.cpp \
-		../src/showinfowidget.cpp \
+		../src/settingwindow.cpp \
 		../src/traywidget.cpp
 QMAKE_TARGET  = rj-aux
 DESTDIR       = 
@@ -673,6 +674,7 @@ Makefile: ../rj-aux.pro /usr/lib/qt/mkspecs/linux-g++/qmake.conf /usr/lib/qt/mks
 		/usr/lib/qt/mkspecs/features/qt_config.prf \
 		/usr/lib/qt/mkspecs/linux-g++/qmake.conf \
 		/usr/lib/qt/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		/usr/lib/qt/mkspecs/features/exclusive_builds.prf \
 		/usr/lib/qt/mkspecs/features/toolchain.prf \
 		/usr/lib/qt/mkspecs/features/default_pre.prf \
@@ -979,6 +981,7 @@ Makefile: ../rj-aux.pro /usr/lib/qt/mkspecs/linux-g++/qmake.conf /usr/lib/qt/mks
 /usr/lib/qt/mkspecs/features/qt_config.prf:
 /usr/lib/qt/mkspecs/linux-g++/qmake.conf:
 /usr/lib/qt/mkspecs/features/spec_post.prf:
+.qmake.stash:
 /usr/lib/qt/mkspecs/features/exclusive_builds.prf:
 /usr/lib/qt/mkspecs/features/toolchain.prf:
 /usr/lib/qt/mkspecs/features/default_pre.prf:
@@ -1020,8 +1023,8 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../image.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/qt/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../src/mainwindow.h ../src/loginwidget.h ../src/showinfowidget.h ../src/traywidget.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../src/main.cpp ../src/mainwindow.cpp ../src/loginwidget.cpp ../src/showinfowidget.cpp ../src/traywidget.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../src/mainwindow.h ../src/loginwidget.h ../src/settingwindow.h ../src/traywidget.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../src/main.cpp ../src/mainwindow.cpp ../src/loginwidget.cpp ../src/settingwindow.cpp ../src/traywidget.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -1060,29 +1063,29 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /usr/lib/qt/mkspecs/features/data/dummy.cpp
 	g++ -pipe -O2 -std=gnu++11 -Wall -Wextra -dM -E -o moc_predefs.h /usr/lib/qt/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_mainwindow.cpp moc_loginwidget.cpp moc_showinfowidget.cpp moc_traywidget.cpp
+compiler_moc_header_make_all: moc_mainwindow.cpp moc_loginwidget.cpp moc_settingwindow.cpp moc_traywidget.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp moc_loginwidget.cpp moc_showinfowidget.cpp moc_traywidget.cpp
+	-$(DEL_FILE) moc_mainwindow.cpp moc_loginwidget.cpp moc_settingwindow.cpp moc_traywidget.cpp
 moc_mainwindow.cpp: ../src/mainwindow.h \
 		../src/loginwidget.h \
-		../src/showinfowidget.h \
 		../src/traywidget.h \
+		../src/settingwindow.h \
 		moc_predefs.h \
 		/usr/bin/moc
 	/usr/bin/moc $(DEFINES) --include /home/sunowsir/Code/1.GitHub/1.MyPorject/rj-aux/build/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/sunowsir/Code/1.GitHub/1.MyPorject/rj-aux -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtDBus -I/usr/include/qt/QtCore -I. -I/usr/include/c++/10.1.0 -I/usr/include/c++/10.1.0/x86_64-pc-linux-gnu -I/usr/include/c++/10.1.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include-fixed -I/usr/include ../src/mainwindow.h -o moc_mainwindow.cpp
 
 moc_loginwidget.cpp: ../src/loginwidget.h \
-		../src/showinfowidget.h \
 		moc_predefs.h \
 		/usr/bin/moc
 	/usr/bin/moc $(DEFINES) --include /home/sunowsir/Code/1.GitHub/1.MyPorject/rj-aux/build/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/sunowsir/Code/1.GitHub/1.MyPorject/rj-aux -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtDBus -I/usr/include/qt/QtCore -I. -I/usr/include/c++/10.1.0 -I/usr/include/c++/10.1.0/x86_64-pc-linux-gnu -I/usr/include/c++/10.1.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include-fixed -I/usr/include ../src/loginwidget.h -o moc_loginwidget.cpp
 
-moc_showinfowidget.cpp: ../src/showinfowidget.h \
+moc_settingwindow.cpp: ../src/settingwindow.h \
 		moc_predefs.h \
 		/usr/bin/moc
-	/usr/bin/moc $(DEFINES) --include /home/sunowsir/Code/1.GitHub/1.MyPorject/rj-aux/build/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/sunowsir/Code/1.GitHub/1.MyPorject/rj-aux -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtDBus -I/usr/include/qt/QtCore -I. -I/usr/include/c++/10.1.0 -I/usr/include/c++/10.1.0/x86_64-pc-linux-gnu -I/usr/include/c++/10.1.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include-fixed -I/usr/include ../src/showinfowidget.h -o moc_showinfowidget.cpp
+	/usr/bin/moc $(DEFINES) --include /home/sunowsir/Code/1.GitHub/1.MyPorject/rj-aux/build/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/sunowsir/Code/1.GitHub/1.MyPorject/rj-aux -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtDBus -I/usr/include/qt/QtCore -I. -I/usr/include/c++/10.1.0 -I/usr/include/c++/10.1.0/x86_64-pc-linux-gnu -I/usr/include/c++/10.1.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include-fixed -I/usr/include ../src/settingwindow.h -o moc_settingwindow.cpp
 
 moc_traywidget.cpp: ../src/traywidget.h \
+		../src/settingwindow.h \
 		moc_predefs.h \
 		/usr/bin/moc
 	/usr/bin/moc $(DEFINES) --include /home/sunowsir/Code/1.GitHub/1.MyPorject/rj-aux/build/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/sunowsir/Code/1.GitHub/1.MyPorject/rj-aux -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtDBus -I/usr/include/qt/QtCore -I. -I/usr/include/c++/10.1.0 -I/usr/include/c++/10.1.0/x86_64-pc-linux-gnu -I/usr/include/c++/10.1.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include-fixed -I/usr/include ../src/traywidget.h -o moc_traywidget.cpp
@@ -1105,24 +1108,24 @@ compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_heade
 
 main.o: ../src/main.cpp ../src/mainwindow.h \
 		../src/loginwidget.h \
-		../src/showinfowidget.h \
-		../src/traywidget.h
+		../src/traywidget.h \
+		../src/settingwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../src/main.cpp
 
 mainwindow.o: ../src/mainwindow.cpp ../src/mainwindow.h \
 		../src/loginwidget.h \
-		../src/showinfowidget.h \
-		../src/traywidget.h
+		../src/traywidget.h \
+		../src/settingwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../src/mainwindow.cpp
 
-loginwidget.o: ../src/loginwidget.cpp ../src/loginwidget.h \
-		../src/showinfowidget.h
+loginwidget.o: ../src/loginwidget.cpp ../src/loginwidget.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o loginwidget.o ../src/loginwidget.cpp
 
-showinfowidget.o: ../src/showinfowidget.cpp ../src/showinfowidget.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o showinfowidget.o ../src/showinfowidget.cpp
+settingwindow.o: ../src/settingwindow.cpp ../src/settingwindow.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o settingwindow.o ../src/settingwindow.cpp
 
-traywidget.o: ../src/traywidget.cpp ../src/traywidget.h
+traywidget.o: ../src/traywidget.cpp ../src/traywidget.h \
+		../src/settingwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o traywidget.o ../src/traywidget.cpp
 
 qrc_image.o: qrc_image.cpp 
@@ -1134,8 +1137,8 @@ moc_mainwindow.o: moc_mainwindow.cpp
 moc_loginwidget.o: moc_loginwidget.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_loginwidget.o moc_loginwidget.cpp
 
-moc_showinfowidget.o: moc_showinfowidget.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_showinfowidget.o moc_showinfowidget.cpp
+moc_settingwindow.o: moc_settingwindow.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_settingwindow.o moc_settingwindow.cpp
 
 moc_traywidget.o: moc_traywidget.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_traywidget.o moc_traywidget.cpp
