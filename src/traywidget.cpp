@@ -59,6 +59,22 @@ TrayWidget::TrayWidget(QWidget *parent) : QWidget(parent)
 
 void TrayWidget::load_core() {
 
+    QFileDialog *select_core = new QFileDialog(this);
+
+    select_core->setWindowTitle(QString("选择锐捷提供的linux有线客户端文件"));
+    select_core->setDirectory(".");
+    select_core->setNameFilter(QString("*.zip"));
+    select_core->setFileMode(QFileDialog::ExistingFiles);
+    select_core->setViewMode(QFileDialog::Detail);
+
+    if (select_core->exec()) {
+        QStringList select_list;
+        select_list = select_core->selectedFiles();
+        this->core_zip = select_list[0];
+        qDebug() << this->core_zip;
+    }
+
+    delete select_core;
 }
 
 void TrayWidget::show_about() {
