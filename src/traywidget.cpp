@@ -58,6 +58,11 @@ TrayWidget::TrayWidget(QWidget *parent) :
 }
 
 
+bool TrayWidget::get_core_state() {
+	return TrayWidget::core_state;
+}
+
+
 /* slot */
 
 void TrayWidget::load_core() {
@@ -75,7 +80,7 @@ void TrayWidget::load_core() {
         select_list = select_core->selectedFiles();
         this->core_zip = select_list[0];
         JlCompress::extractDir(this->core_zip, this->extract_dir);
-		this->core_status = (!this->extract_dir.isEmpty());
+		TrayWidget::core_state = (!this->extract_dir.isEmpty());
     }
 
     delete select_core;

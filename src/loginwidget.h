@@ -55,7 +55,7 @@ class loginWidget : public QWidget
 
     /* QProcess */
 
-    bool            rund_status;
+    static QProcess *static_process;
     QProcess        *process;
     QStringList     pro_args;
 
@@ -78,6 +78,10 @@ class loginWidget : public QWidget
     /* information save */
 
     QString         netcard;
+	QString			core_process_name;
+	QString			get_account_process_name;
+	QString			setting_init_file_name;
+	QString			notify_process_name;
     QStringList     netcard_list;
 
     // NetCardWidget   *netcardMaster;
@@ -85,14 +89,15 @@ class loginWidget : public QWidget
     bool getMCheckStatus();
     bool getLCheckStatus();
     void RefreshNetCard();
-    QString runProOnce(QString pro_name = "", QStringList arg = QStringList());
+	QString runProOnce(QString pro_name = "", QStringList arg = QStringList());
+
 signals:
 
 public:
-	static bool core_run_status;
-
     explicit loginWidget(QMainWindow *parent = nullptr);
     ~loginWidget();
+
+	static QProcess::ProcessState get_core_state();
 
 public slots:
     void triggerlogin();

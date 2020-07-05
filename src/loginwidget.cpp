@@ -12,7 +12,7 @@ loginWidget::loginWidget(QMainWindow *parent) : QWidget(parent)
     this->parent = parent;
 
 
-    this->default_account = runProOnce(QString(QCoreApplication::applicationDirPath() + "/getLastAccount"));
+    this->default_account = this->runProOnce(QString(QCoreApplication::applicationDirPath() + "/getLastAccount"));
     this->default_password = "******";
 
     /* account label */
@@ -102,7 +102,9 @@ loginWidget::loginWidget(QMainWindow *parent) : QWidget(parent)
     this->ShowInfoMaster = new ShowInfoWidget(this);
 
 
-    this->rund_status = false;
+	loginWidget::static_process = this->process;
+
+
     this->process = nullptr;
     this->pro_args = QStringList(QStringList() << "-a"
                                      << "1"
@@ -140,12 +142,10 @@ loginWidget::loginWidget(QMainWindow *parent) : QWidget(parent)
 }
 
 loginWidget::~loginWidget() {
-    if (this->rund_status) {
-        if (this->process != nullptr) {
-            runProOnce("./rjsupplicant.start", QStringList() << "-q");
-        }
-        // restart network;
-        runProOnce("systemctl", QStringList() << "restart" << "NetworkManager.service");
+    if (this->process != nullptr) {
+        this->runProOnce("./rjsupplicant.start", QStringList() << "-q");
+		// restart network;
+    	this->runProOnce("systemctl", QStringList() << "restart" << "NetworkManager.service");
     }
 }
 
@@ -153,18 +153,17 @@ loginWidget::~loginWidget() {
 
 void loginWidget::triggerlogin() {
 
-    if (!this->rund_status) this->rund_status = true;
-    
-
     this->ShowInfoMaster->clear();
 
     if (this->process == nullptr) {
         this->process = new QProcess(this);
     } else {
-        runProOnce("./rjsupplicant.start", QStringList() << "-q");
+        this->runProOnce("./rjsupplicant.start", QStringList() << "-q");
         this->process->kill();
         this->process->close();
     }
+
+	loginWidget::static_process = this->process;
 
     if (this->pro_args[5] != this->account)
         this->pro_args.replace(5, this->account);
@@ -213,13 +212,14 @@ void loginWidget::triggerlogin() {
 
 
 QString loginWidget::runProOnce(QString pro_name, QStringList arg) {
-
     QString ret;
 
     if (pro_name.isEmpty()) {
         ret.clear();
         return ret;
     }
+
+	loginWidget::static_process = this->process;
 
     QProcess pro;
     pro.setWorkingDirectory(QCoreApplication::applicationDirPath());
@@ -228,6 +228,8 @@ QString loginWidget::runProOnce(QString pro_name, QStringList arg) {
     ret = pro.readAllStandardOutput();
     pro.kill();
     pro.close();
+
+	loginWidget::static_process = this->process;
 
     return ret;
 }
@@ -266,6 +268,9 @@ bool loginWidget::getLCheckStatus() {
 }
 
 
+QProcess::ProcessState loginWidget::get_core_state() {
+	return loginWidget::static_process->state();
+}
 
 
 /* slot */
@@ -281,12 +286,12 @@ void loginWidget::getProOutput() {
 
     if (retStr.contains(QString("成功"))) {
         // restart network;
-        runProOnce(QString("systemctl"), QStringList() << "restart" << "NetworkManager.service");
+        this->runProOnce(QString("systemctl"), QStringList() << "restart" << "NetworkManager.service");
         // this->ShowInfoMaster->setText(retStr);
         
         // QMessageBox::information(nullptr, "登录成功", "登录面板已隐藏到托盘");
 
-        runProOnce(QString("./notify"));
+        this->runProOnce(QString("./notify"));
 
 		this->parent->hide();
     }
@@ -298,7 +303,7 @@ void loginWidget::getProErrout() {
     if (!QRegExp("\\s*").exactMatch(errStr) &&
          !errStr.contains("sysctl") &&
          !errStr.contains("write error") &&
-         !errStr.contains("错误的文件描述符")
+         !errStr.contains(QString("错误的文件描述符"))
     ) {
         QMessageBox::information(nullptr, "Error", errStr);
     }

@@ -29,10 +29,12 @@ class TrayWidget : public QWidget
     QString 		core_zip;
     QString 		extract_dir;
 
+	static bool		core_state;
+
 public:
-	static bool core_status;
-	
 	explicit TrayWidget(QWidget *parent = nullptr);
+
+	static bool get_core_state();
 
 signals:
 
