@@ -8,6 +8,7 @@
 #include <QWidget>
 #include <QString>
 #include <QIODevice>
+#include <JlCompress.h>
 #include <QByteArray>
 #include <qfiledialog.h>
 #include <QSystemTrayIcon>
@@ -26,9 +27,12 @@ class TrayWidget : public QWidget
     QAction         *exit_act;
 
     QString 		core_zip;
+    QString 		extract_dir;
 
 public:
-    explicit TrayWidget(QWidget *parent = nullptr);
+	static bool core_status;
+	
+	explicit TrayWidget(QWidget *parent = nullptr);
 
 signals:
 

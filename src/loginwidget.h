@@ -85,10 +85,12 @@ class loginWidget : public QWidget
     bool getMCheckStatus();
     bool getLCheckStatus();
     void RefreshNetCard();
-    static QString runProOnce(QString pro_name = "", QStringList arg = QStringList());
+    QString runProOnce(QString pro_name = "", QStringList arg = QStringList());
 signals:
 
 public:
+	static bool core_run_status;
+
     explicit loginWidget(QMainWindow *parent = nullptr);
     ~loginWidget();
 

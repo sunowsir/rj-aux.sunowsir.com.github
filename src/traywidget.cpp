@@ -1,7 +1,7 @@
 #include "traywidget.h"
 
-TrayWidget::TrayWidget(QWidget *parent) : QWidget(parent)
-{
+TrayWidget::TrayWidget(QWidget *parent) : 
+	QWidget(parent) {
     /* tray */
 
     this->tray_icon = new QSystemTrayIcon(this);
@@ -30,6 +30,9 @@ TrayWidget::TrayWidget(QWidget *parent) : QWidget(parent)
     this->menu->addAction(this->core_act);
     this->menu->addAction(this->about_act);
     this->menu->addAction(this->exit_act);
+
+
+    this->extract_dir = QCoreApplication::applicationDirPath();
 
 
     /* connect signal with slot. */
@@ -71,7 +74,8 @@ void TrayWidget::load_core() {
         QStringList select_list;
         select_list = select_core->selectedFiles();
         this->core_zip = select_list[0];
-        qDebug() << this->core_zip;
+        JlCompress::extractDir(this->core_zip, this->extract_dir);
+		this->core_status = (!this->extract_dir.isEmpty());
     }
 
     delete select_core;
