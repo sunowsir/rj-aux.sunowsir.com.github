@@ -32,8 +32,6 @@ TrayWidget::TrayWidget(QWidget *parent) :
     this->menu->addAction(this->exit_act);
 
 
-    this->extract_dir = QCoreApplication::applicationDirPath();
-
 
     /* connect signal with slot. */
 
@@ -59,7 +57,7 @@ TrayWidget::TrayWidget(QWidget *parent) :
 
 
 bool TrayWidget::get_core_state() {
-	return TrayWidget::core_state;
+	// return TrayWidget::core_state;
 }
 
 
@@ -71,16 +69,15 @@ void TrayWidget::load_core() {
 
     select_core->setWindowTitle(QString("选择锐捷提供的linux有线客户端文件"));
     select_core->setDirectory(".");
-    select_core->setNameFilter(QString("*.zip"));
+    select_core->setNameFilters(QStringList() << QString("rjsupplicant.sh (rjsupplicant.sh)")
+											  << QString("rjsupplicant (rjsupplicant)"));
     select_core->setFileMode(QFileDialog::ExistingFiles);
     select_core->setViewMode(QFileDialog::Detail);
 
     if (select_core->exec()) {
         QStringList select_list;
         select_list = select_core->selectedFiles();
-        this->core_zip = select_list[0];
-        JlCompress::extractDir(this->core_zip, this->extract_dir);
-		TrayWidget::core_state = (!this->extract_dir.isEmpty());
+        this->core = select_list[0];
     }
 
     delete select_core;

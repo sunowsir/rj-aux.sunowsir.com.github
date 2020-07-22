@@ -102,7 +102,7 @@ loginWidget::loginWidget(QMainWindow *parent) : QWidget(parent)
     this->ShowInfoMaster = new ShowInfoWidget(this);
 
 
-	loginWidget::static_process = this->process;
+	// loginWidget::static_process = this->process;
 
 
     this->process = nullptr;
@@ -163,7 +163,7 @@ void loginWidget::triggerlogin() {
         this->process->close();
     }
 
-	loginWidget::static_process = this->process;
+	// loginWidget::static_process = this->process;
 
     if (this->pro_args[5] != this->account)
         this->pro_args.replace(5, this->account);
@@ -219,7 +219,7 @@ QString loginWidget::runProOnce(QString pro_name, QStringList arg) {
         return ret;
     }
 
-	loginWidget::static_process = this->process;
+	// loginWidget::static_process = this->process;
 
     QProcess pro;
     pro.setWorkingDirectory(QCoreApplication::applicationDirPath());
@@ -229,7 +229,7 @@ QString loginWidget::runProOnce(QString pro_name, QStringList arg) {
     pro.kill();
     pro.close();
 
-	loginWidget::static_process = this->process;
+	// loginWidget::static_process = this->process;
 
     return ret;
 }
@@ -269,7 +269,7 @@ bool loginWidget::getLCheckStatus() {
 
 
 QProcess::ProcessState loginWidget::get_core_state() {
-	return loginWidget::static_process->state();
+	// return loginWidget::static_process->state();
 }
 
 

@@ -26,10 +26,6 @@ HEADERS += \
 
 CONFIG += link_pkgconfig c++11 console app_bundle
 
-LIBS += $$PWD/libQt5Quazip.so.1
-
-INCLUDEPATH += $$PWD/src/
-
 RESOURCES += \
     image.qrc \
 
