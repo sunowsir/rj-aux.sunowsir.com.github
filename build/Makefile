@@ -17,7 +17,7 @@ CXX           = g++
 DEFINES       = -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_DBUS_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -O2 -Wall -Wextra -D_REENTRANT -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -O2 -std=gnu++11 -Wall -Wextra -D_REENTRANT -fPIC $(DEFINES)
-INCPATH       = -I../../rj-aux -I. -I../src -isystem /usr/include/qt -isystem /usr/include/qt/QtWidgets -isystem /usr/include/qt/QtGui -isystem /usr/include/qt/QtNetwork -isystem /usr/include/qt/QtDBus -isystem /usr/include/qt/QtCore -I. -I/usr/lib/qt/mkspecs/linux-g++
+INCPATH       = -I../../rj-aux -I. -isystem /usr/include/qt -isystem /usr/include/qt/QtWidgets -isystem /usr/include/qt/QtGui -isystem /usr/include/qt/QtNetwork -isystem /usr/include/qt/QtDBus -isystem /usr/include/qt/QtCore -I. -I/usr/lib/qt/mkspecs/linux-g++
 QMAKE         = /usr/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -40,7 +40,7 @@ DISTNAME      = rj-aux1.0.0
 DISTDIR = /home/sunowsir/Code/1.GitHub/1.MyPorject/rj-aux/build/.tmp/rj-aux1.0.0
 LINK          = g++
 LFLAGS        = -Wl,-O1
-LIBS          = $(SUBLIBS) /home/sunowsir/Code/1.GitHub/1.MyPorject/rj-aux/libQt5Quazip.so.1 /usr/lib/libQt5Widgets.so /usr/lib/libQt5Gui.so /usr/lib/libQt5Network.so /usr/lib/libQt5DBus.so /usr/lib/libQt5Core.so -lGL -lpthread   
+LIBS          = $(SUBLIBS) /usr/lib/libQt5Widgets.so /usr/lib/libQt5Gui.so /usr/lib/libQt5Network.so /usr/lib/libQt5DBus.so /usr/lib/libQt5Core.so -lGL -lpthread   
 AR            = ar cqs
 RANLIB        = 
 SED           = sed
@@ -1070,43 +1070,25 @@ moc_mainwindow.cpp: ../src/mainwindow.h \
 		../src/loginwidget.h \
 		../src/showinfowidget.h \
 		../src/traywidget.h \
-		../src/JlCompress.h \
-		../src/quazip.h \
-		../src/zip.h \
-		../src/ioapi.h \
-		../src/unzip.h \
-		../src/quazip_global.h \
-		../src/quazipfileinfo.h \
-		../src/quazipfile.h \
-		../src/quazipnewinfo.h \
 		moc_predefs.h \
 		/usr/bin/moc
-	/usr/bin/moc $(DEFINES) --include /home/sunowsir/Code/1.GitHub/1.MyPorject/rj-aux/build/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/sunowsir/Code/1.GitHub/1.MyPorject/rj-aux -I/home/sunowsir/Code/1.GitHub/1.MyPorject/rj-aux/src -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtDBus -I/usr/include/qt/QtCore -I. -I/usr/include/c++/10.1.0 -I/usr/include/c++/10.1.0/x86_64-pc-linux-gnu -I/usr/include/c++/10.1.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include-fixed -I/usr/include ../src/mainwindow.h -o moc_mainwindow.cpp
+	/usr/bin/moc $(DEFINES) --include /home/sunowsir/Code/1.GitHub/1.MyPorject/rj-aux/build/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/sunowsir/Code/1.GitHub/1.MyPorject/rj-aux -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtDBus -I/usr/include/qt/QtCore -I. -I/usr/include/c++/10.1.0 -I/usr/include/c++/10.1.0/x86_64-pc-linux-gnu -I/usr/include/c++/10.1.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include-fixed -I/usr/include ../src/mainwindow.h -o moc_mainwindow.cpp
 
 moc_loginwidget.cpp: ../src/loginwidget.h \
 		../src/showinfowidget.h \
 		moc_predefs.h \
 		/usr/bin/moc
-	/usr/bin/moc $(DEFINES) --include /home/sunowsir/Code/1.GitHub/1.MyPorject/rj-aux/build/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/sunowsir/Code/1.GitHub/1.MyPorject/rj-aux -I/home/sunowsir/Code/1.GitHub/1.MyPorject/rj-aux/src -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtDBus -I/usr/include/qt/QtCore -I. -I/usr/include/c++/10.1.0 -I/usr/include/c++/10.1.0/x86_64-pc-linux-gnu -I/usr/include/c++/10.1.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include-fixed -I/usr/include ../src/loginwidget.h -o moc_loginwidget.cpp
+	/usr/bin/moc $(DEFINES) --include /home/sunowsir/Code/1.GitHub/1.MyPorject/rj-aux/build/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/sunowsir/Code/1.GitHub/1.MyPorject/rj-aux -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtDBus -I/usr/include/qt/QtCore -I. -I/usr/include/c++/10.1.0 -I/usr/include/c++/10.1.0/x86_64-pc-linux-gnu -I/usr/include/c++/10.1.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include-fixed -I/usr/include ../src/loginwidget.h -o moc_loginwidget.cpp
 
 moc_traywidget.cpp: ../src/traywidget.h \
-		../src/JlCompress.h \
-		../src/quazip.h \
-		../src/zip.h \
-		../src/ioapi.h \
-		../src/unzip.h \
-		../src/quazip_global.h \
-		../src/quazipfileinfo.h \
-		../src/quazipfile.h \
-		../src/quazipnewinfo.h \
 		moc_predefs.h \
 		/usr/bin/moc
-	/usr/bin/moc $(DEFINES) --include /home/sunowsir/Code/1.GitHub/1.MyPorject/rj-aux/build/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/sunowsir/Code/1.GitHub/1.MyPorject/rj-aux -I/home/sunowsir/Code/1.GitHub/1.MyPorject/rj-aux/src -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtDBus -I/usr/include/qt/QtCore -I. -I/usr/include/c++/10.1.0 -I/usr/include/c++/10.1.0/x86_64-pc-linux-gnu -I/usr/include/c++/10.1.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include-fixed -I/usr/include ../src/traywidget.h -o moc_traywidget.cpp
+	/usr/bin/moc $(DEFINES) --include /home/sunowsir/Code/1.GitHub/1.MyPorject/rj-aux/build/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/sunowsir/Code/1.GitHub/1.MyPorject/rj-aux -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtDBus -I/usr/include/qt/QtCore -I. -I/usr/include/c++/10.1.0 -I/usr/include/c++/10.1.0/x86_64-pc-linux-gnu -I/usr/include/c++/10.1.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include-fixed -I/usr/include ../src/traywidget.h -o moc_traywidget.cpp
 
 moc_showinfowidget.cpp: ../src/showinfowidget.h \
 		moc_predefs.h \
 		/usr/bin/moc
-	/usr/bin/moc $(DEFINES) --include /home/sunowsir/Code/1.GitHub/1.MyPorject/rj-aux/build/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/sunowsir/Code/1.GitHub/1.MyPorject/rj-aux -I/home/sunowsir/Code/1.GitHub/1.MyPorject/rj-aux/src -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtDBus -I/usr/include/qt/QtCore -I. -I/usr/include/c++/10.1.0 -I/usr/include/c++/10.1.0/x86_64-pc-linux-gnu -I/usr/include/c++/10.1.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include-fixed -I/usr/include ../src/showinfowidget.h -o moc_showinfowidget.cpp
+	/usr/bin/moc $(DEFINES) --include /home/sunowsir/Code/1.GitHub/1.MyPorject/rj-aux/build/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/sunowsir/Code/1.GitHub/1.MyPorject/rj-aux -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtDBus -I/usr/include/qt/QtCore -I. -I/usr/include/c++/10.1.0 -I/usr/include/c++/10.1.0/x86_64-pc-linux-gnu -I/usr/include/c++/10.1.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include-fixed -I/usr/include ../src/showinfowidget.h -o moc_showinfowidget.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -1127,47 +1109,20 @@ compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_heade
 main.o: ../src/main.cpp ../src/mainwindow.h \
 		../src/loginwidget.h \
 		../src/showinfowidget.h \
-		../src/traywidget.h \
-		../src/JlCompress.h \
-		../src/quazip.h \
-		../src/zip.h \
-		../src/ioapi.h \
-		../src/unzip.h \
-		../src/quazip_global.h \
-		../src/quazipfileinfo.h \
-		../src/quazipfile.h \
-		../src/quazipnewinfo.h
+		../src/traywidget.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../src/main.cpp
 
 mainwindow.o: ../src/mainwindow.cpp ../src/mainwindow.h \
 		../src/loginwidget.h \
 		../src/showinfowidget.h \
-		../src/traywidget.h \
-		../src/JlCompress.h \
-		../src/quazip.h \
-		../src/zip.h \
-		../src/ioapi.h \
-		../src/unzip.h \
-		../src/quazip_global.h \
-		../src/quazipfileinfo.h \
-		../src/quazipfile.h \
-		../src/quazipnewinfo.h
+		../src/traywidget.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../src/mainwindow.cpp
 
 loginwidget.o: ../src/loginwidget.cpp ../src/loginwidget.h \
 		../src/showinfowidget.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o loginwidget.o ../src/loginwidget.cpp
 
-traywidget.o: ../src/traywidget.cpp ../src/traywidget.h \
-		../src/JlCompress.h \
-		../src/quazip.h \
-		../src/zip.h \
-		../src/ioapi.h \
-		../src/unzip.h \
-		../src/quazip_global.h \
-		../src/quazipfileinfo.h \
-		../src/quazipfile.h \
-		../src/quazipnewinfo.h
+traywidget.o: ../src/traywidget.cpp ../src/traywidget.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o traywidget.o ../src/traywidget.cpp
 
 showinfowidget.o: ../src/showinfowidget.cpp ../src/showinfowidget.h
