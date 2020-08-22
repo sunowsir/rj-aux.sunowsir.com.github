@@ -52,10 +52,10 @@ TrayWidget::TrayWidget(QWidget *parent) :
                     Qt::AutoConnection);
     QWidget::connect(this->exit_act, SIGNAL(triggered()),
                     qApp, SLOT(quit()),
-                    Qt::AutoConnection);
+                    Qt::AutoConnection)
 }
 
-
+std::enable_shared_from_this
 bool TrayWidget::get_core_state() {
 	// return TrayWidget::core_state;
 }
