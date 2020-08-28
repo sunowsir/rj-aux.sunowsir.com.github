@@ -27,12 +27,14 @@ class TrayWidget : public QWidget
 
     QString 		core;
 
-	static bool		core_state;
+	bool            core_state;
+
+    QWidget         *parent;
 
 public:
 	explicit TrayWidget(QWidget *parent = nullptr);
 
-	static bool get_core_state();
+	QString get_core();
 
 signals:
 

@@ -77,6 +77,7 @@ class loginWidget : public QWidget
 
     /* information save */
 
+    QString         core_file;
     QString         netcard;
 	QString			core_process_name;
 	QString			get_account_process_name;
@@ -89,6 +90,7 @@ class loginWidget : public QWidget
     bool getMCheckStatus();
     bool getLCheckStatus();
     void RefreshNetCard();
+    void setDefaultAccount();
 	QString runProOnce(QString pro_name = "", QStringList arg = QStringList());
 
 signals:
@@ -97,7 +99,7 @@ public:
     explicit loginWidget(QMainWindow *parent = nullptr);
     ~loginWidget();
 
-	static QProcess::ProcessState get_core_state();
+    void SetCore(QString);
 
 public slots:
     void triggerlogin();

@@ -31,6 +31,27 @@ void MainWindow::trayAction(QSystemTrayIcon::ActivationReason reason) {
     }
 }
 
+void MainWindow::load_core() {
+
+    QFileDialog *select_core = new QFileDialog(this);
+
+    select_core->setWindowTitle(QString("选择锐捷提供的linux有线客户端文件"));
+    select_core->setDirectory(".");
+    select_core->setNameFilters(QStringList() << QString("rjsupplicant.sh (rjsupplicant.sh)")
+											  << QString("rjsupplicant (rjsupplicant)"));
+    select_core->setFileMode(QFileDialog::ExistingFiles);
+    select_core->setViewMode(QFileDialog::Detail);
+
+    if (select_core->exec()) {
+        QStringList select_list;
+        select_list = select_core->selectedFiles();
+        this->w->SetCore(select_list[0]);
+    }
+
+    delete select_core;
+}
+
+
 
 /* rewrite */
 

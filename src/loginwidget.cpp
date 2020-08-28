@@ -149,6 +149,10 @@ loginWidget::~loginWidget() {
     }
 }
 
+void loginWidget::SetCore(QString core) {
+    this->core_file = core;
+}
+
 
 
 void loginWidget::triggerlogin() {
@@ -210,6 +214,9 @@ void loginWidget::triggerlogin() {
 
 }
 
+void loginWidget::setDefaultAccount() {
+    this->default_account = this->runProOnce(QString(QCoreApplication::applicationDirPath() + "/getLastAccount"));
+}
 
 QString loginWidget::runProOnce(QString pro_name, QStringList arg) {
     QString ret;
@@ -265,11 +272,6 @@ bool loginWidget::getMCheckStatus() {
 
 bool loginWidget::getLCheckStatus() {
     return this->auto_checkbox->checkState();
-}
-
-
-QProcess::ProcessState loginWidget::get_core_state() {
-	// return loginWidget::static_process->state();
 }
 
 

@@ -30,6 +30,7 @@ protected:
 
 public slots:
     void trayAction(QSystemTrayIcon::ActivationReason reason);
+    void load_core();
 };
 
 #endif // MAINWINDOW_H

@@ -32,6 +32,8 @@ TrayWidget::TrayWidget(QWidget *parent) :
     this->menu->addAction(this->exit_act);
 
 
+    this->parent = parent;
+
 
     /* connect signal with slot. */
 
@@ -45,19 +47,23 @@ TrayWidget::TrayWidget(QWidget *parent) :
                     parent, SLOT(hide()),
                     Qt::AutoConnection);
     QWidget::connect(this->core_act, SIGNAL(triggered()),
-                    this, SLOT(load_core()),
+                    parent, SLOT(load_core()),
                     Qt::AutoConnection);
     QWidget::connect(this->about_act, SIGNAL(triggered()),
                     this, SLOT(show_about()),
                     Qt::AutoConnection);
     QWidget::connect(this->exit_act, SIGNAL(triggered()),
                     qApp, SLOT(quit()),
-                    Qt::AutoConnection)
+                    Qt::AutoConnection);
 }
 
-std::enable_shared_from_this
-bool TrayWidget::get_core_state() {
-	// return TrayWidget::core_state;
+QString TrayWidget::get_core() {
+
+    if (this->core_state) {
+        return this->core;
+    }
+
+    return QString("");
 }
 
 
@@ -78,6 +84,7 @@ void TrayWidget::load_core() {
         QStringList select_list;
         select_list = select_core->selectedFiles();
         this->core = select_list[0];
+        this->core_state = true;
     }
 
     delete select_core;
