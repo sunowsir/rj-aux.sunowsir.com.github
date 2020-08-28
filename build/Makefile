@@ -94,7 +94,6 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		/usr/lib/qt/mkspecs/modules/qt_CalendarSupport.pri \
 		/usr/lib/qt/mkspecs/modules/qt_ContactEditor.pri \
 		/usr/lib/qt/mkspecs/modules/qt_EventViews.pri \
-		/usr/lib/qt/mkspecs/modules/qt_FollowupReminder.pri \
 		/usr/lib/qt/mkspecs/modules/qt_GrantleeTheme.pri \
 		/usr/lib/qt/mkspecs/modules/qt_Gravatar.pri \
 		/usr/lib/qt/mkspecs/modules/qt_IncidenceEditor.pri \
@@ -124,7 +123,6 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		/usr/lib/qt/mkspecs/modules/qt_kdav.pri \
 		/usr/lib/qt/mkspecs/modules/qt_KDBusAddons.pri \
 		/usr/lib/qt/mkspecs/modules/qt_KDeclarative.pri \
-		/usr/lib/qt/mkspecs/modules/qt_KdepimDBusInterfaces.pri \
 		/usr/lib/qt/mkspecs/modules/qt_KDESu.pri \
 		/usr/lib/qt/mkspecs/modules/qt_KDNSSD.pri \
 		/usr/lib/qt/mkspecs/modules/qt_KEmoticons.pri \
@@ -323,7 +321,6 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		/usr/lib/qt/mkspecs/modules/qt_lib_xmlpatterns.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_xmlpatterns_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_Libkdepim.pri \
-		/usr/lib/qt/mkspecs/modules/qt_LibkdepimAkonadi.pri \
 		/usr/lib/qt/mkspecs/modules/qt_Libkleo.pri \
 		/usr/lib/qt/mkspecs/modules/qt_MailCommon.pri \
 		/usr/lib/qt/mkspecs/modules/qt_MailImporter.pri \
@@ -339,7 +336,6 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		/usr/lib/qt/mkspecs/modules/qt_PimCommonAkonadi.pri \
 		/usr/lib/qt/mkspecs/modules/qt_Prison.pri \
 		/usr/lib/qt/mkspecs/modules/qt_QuickAddons.pri \
-		/usr/lib/qt/mkspecs/modules/qt_SendLater.pri \
 		/usr/lib/qt/mkspecs/modules/qt_Solid.pri \
 		/usr/lib/qt/mkspecs/modules/qt_SonnetCore.pri \
 		/usr/lib/qt/mkspecs/modules/qt_SonnetUi.pri \
@@ -417,7 +413,6 @@ Makefile: ../rj-aux.pro /usr/lib/qt/mkspecs/linux-g++/qmake.conf /usr/lib/qt/mks
 		/usr/lib/qt/mkspecs/modules/qt_CalendarSupport.pri \
 		/usr/lib/qt/mkspecs/modules/qt_ContactEditor.pri \
 		/usr/lib/qt/mkspecs/modules/qt_EventViews.pri \
-		/usr/lib/qt/mkspecs/modules/qt_FollowupReminder.pri \
 		/usr/lib/qt/mkspecs/modules/qt_GrantleeTheme.pri \
 		/usr/lib/qt/mkspecs/modules/qt_Gravatar.pri \
 		/usr/lib/qt/mkspecs/modules/qt_IncidenceEditor.pri \
@@ -447,7 +442,6 @@ Makefile: ../rj-aux.pro /usr/lib/qt/mkspecs/linux-g++/qmake.conf /usr/lib/qt/mks
 		/usr/lib/qt/mkspecs/modules/qt_kdav.pri \
 		/usr/lib/qt/mkspecs/modules/qt_KDBusAddons.pri \
 		/usr/lib/qt/mkspecs/modules/qt_KDeclarative.pri \
-		/usr/lib/qt/mkspecs/modules/qt_KdepimDBusInterfaces.pri \
 		/usr/lib/qt/mkspecs/modules/qt_KDESu.pri \
 		/usr/lib/qt/mkspecs/modules/qt_KDNSSD.pri \
 		/usr/lib/qt/mkspecs/modules/qt_KEmoticons.pri \
@@ -646,7 +640,6 @@ Makefile: ../rj-aux.pro /usr/lib/qt/mkspecs/linux-g++/qmake.conf /usr/lib/qt/mks
 		/usr/lib/qt/mkspecs/modules/qt_lib_xmlpatterns.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_xmlpatterns_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_Libkdepim.pri \
-		/usr/lib/qt/mkspecs/modules/qt_LibkdepimAkonadi.pri \
 		/usr/lib/qt/mkspecs/modules/qt_Libkleo.pri \
 		/usr/lib/qt/mkspecs/modules/qt_MailCommon.pri \
 		/usr/lib/qt/mkspecs/modules/qt_MailImporter.pri \
@@ -662,7 +655,6 @@ Makefile: ../rj-aux.pro /usr/lib/qt/mkspecs/linux-g++/qmake.conf /usr/lib/qt/mks
 		/usr/lib/qt/mkspecs/modules/qt_PimCommonAkonadi.pri \
 		/usr/lib/qt/mkspecs/modules/qt_Prison.pri \
 		/usr/lib/qt/mkspecs/modules/qt_QuickAddons.pri \
-		/usr/lib/qt/mkspecs/modules/qt_SendLater.pri \
 		/usr/lib/qt/mkspecs/modules/qt_Solid.pri \
 		/usr/lib/qt/mkspecs/modules/qt_SonnetCore.pri \
 		/usr/lib/qt/mkspecs/modules/qt_SonnetUi.pri \
@@ -724,7 +716,6 @@ Makefile: ../rj-aux.pro /usr/lib/qt/mkspecs/linux-g++/qmake.conf /usr/lib/qt/mks
 /usr/lib/qt/mkspecs/modules/qt_CalendarSupport.pri:
 /usr/lib/qt/mkspecs/modules/qt_ContactEditor.pri:
 /usr/lib/qt/mkspecs/modules/qt_EventViews.pri:
-/usr/lib/qt/mkspecs/modules/qt_FollowupReminder.pri:
 /usr/lib/qt/mkspecs/modules/qt_GrantleeTheme.pri:
 /usr/lib/qt/mkspecs/modules/qt_Gravatar.pri:
 /usr/lib/qt/mkspecs/modules/qt_IncidenceEditor.pri:
@@ -754,7 +745,6 @@ Makefile: ../rj-aux.pro /usr/lib/qt/mkspecs/linux-g++/qmake.conf /usr/lib/qt/mks
 /usr/lib/qt/mkspecs/modules/qt_kdav.pri:
 /usr/lib/qt/mkspecs/modules/qt_KDBusAddons.pri:
 /usr/lib/qt/mkspecs/modules/qt_KDeclarative.pri:
-/usr/lib/qt/mkspecs/modules/qt_KdepimDBusInterfaces.pri:
 /usr/lib/qt/mkspecs/modules/qt_KDESu.pri:
 /usr/lib/qt/mkspecs/modules/qt_KDNSSD.pri:
 /usr/lib/qt/mkspecs/modules/qt_KEmoticons.pri:
@@ -953,7 +943,6 @@ Makefile: ../rj-aux.pro /usr/lib/qt/mkspecs/linux-g++/qmake.conf /usr/lib/qt/mks
 /usr/lib/qt/mkspecs/modules/qt_lib_xmlpatterns.pri:
 /usr/lib/qt/mkspecs/modules/qt_lib_xmlpatterns_private.pri:
 /usr/lib/qt/mkspecs/modules/qt_Libkdepim.pri:
-/usr/lib/qt/mkspecs/modules/qt_LibkdepimAkonadi.pri:
 /usr/lib/qt/mkspecs/modules/qt_Libkleo.pri:
 /usr/lib/qt/mkspecs/modules/qt_MailCommon.pri:
 /usr/lib/qt/mkspecs/modules/qt_MailImporter.pri:
@@ -969,7 +958,6 @@ Makefile: ../rj-aux.pro /usr/lib/qt/mkspecs/linux-g++/qmake.conf /usr/lib/qt/mks
 /usr/lib/qt/mkspecs/modules/qt_PimCommonAkonadi.pri:
 /usr/lib/qt/mkspecs/modules/qt_Prison.pri:
 /usr/lib/qt/mkspecs/modules/qt_QuickAddons.pri:
-/usr/lib/qt/mkspecs/modules/qt_SendLater.pri:
 /usr/lib/qt/mkspecs/modules/qt_Solid.pri:
 /usr/lib/qt/mkspecs/modules/qt_SonnetCore.pri:
 /usr/lib/qt/mkspecs/modules/qt_SonnetUi.pri:

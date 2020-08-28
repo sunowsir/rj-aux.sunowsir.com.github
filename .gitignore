@@ -2,3 +2,5 @@ build/
 .clangd/
 
 compile_commands.json
+rj-aux.pro.user*
+
