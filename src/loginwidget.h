@@ -90,7 +90,6 @@ class loginWidget : public QWidget
     bool getMCheckStatus();
     bool getLCheckStatus();
     void RefreshNetCard();
-    void setDefaultAccount();
 	QString runProOnce(QString pro_name = "", QStringList arg = QStringList());
 
 signals:

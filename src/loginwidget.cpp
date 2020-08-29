@@ -214,10 +214,6 @@ void loginWidget::triggerlogin() {
 
 }
 
-void loginWidget::setDefaultAccount() {
-    this->default_account = this->runProOnce(QString(QCoreApplication::applicationDirPath() + "/getLastAccount"));
-}
-
 QString loginWidget::runProOnce(QString pro_name, QStringList arg) {
     QString ret;
 
