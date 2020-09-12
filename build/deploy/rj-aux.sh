@@ -17,4 +17,6 @@ fi
 LD_LIBRARY_PATH="$dirname"  
 export LD_LIBRARY_PATH  
 
+echo "$dirname"/"$appname"
+
 "$dirname"/"$appname" "$@"
