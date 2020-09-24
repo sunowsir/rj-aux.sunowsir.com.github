@@ -19,6 +19,7 @@
 - [x] 拦截重复启动
 - [x] 认证成功信息界面
 - [x] 软件启动自动登陆选项
+- [ ] 使用Dtk框架构建Deepin风格UI
 
 # 依赖环境
 
@@ -29,7 +30,7 @@
 
 ```bash
 
-sudo apt install -y libdtkwidget-dev g++ gdb make qtchooser qt5-qmake qt5-default gdb
+sudo apt install -y g++ gdb make qtchooser qt5-qmake qt5-default gdb
 
 ```
 
@@ -47,7 +48,18 @@ make
 ```
 
 *  手动用开发环境构建后无法直接使用，需要将构建生成的可执行程序、`script/`下的脚本以及policy文件一同放到锐捷官方程序目录下。
-*  打包的deb安装包中集成了锐捷官方程序、增加了缺少的必要的动态链接库，安装后可以直接使用。
+
+## 打包
+> 打包的deb安装包中集成了锐捷官方程序、增加了缺少的必要的动态链接库，安装后可以直接使用。
+ 1. 按照上述编译流程进行编译
+ 2. `mkdir rj-aux.sunowsir.com.github`，# 创建构建目录
+ 3. `cp ./build/rj-aux ./opt/rjsupplicant-aux/` # 将编译生成的二进制文件拷贝到软件目录
+ 4. 插上学校网线打开浏览器会弹出下载界面，下载锐捷linux客户端，解压到当前项目目录中
+ 5. `cp -r ./RG_SU_For_Linux_4_90/rjsupplicant/x64/* ./opt/rjsupplicant-aux/` # 将锐捷程序以及其他配置文件拷贝到软件目录
+ 6. `cp ./lib ./opt ./usr ./DEBIAN ./rj-aux.sunowsir.com.github/` # 将软件各个文件拷贝到打包目录
+ 7. `dpkg-deb -b ./rj-aux.sunowsir.com.github/` # 打包
+
+
 
 ## 下载
 
