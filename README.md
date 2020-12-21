@@ -30,7 +30,7 @@
 
 ```bash
 
-sudo apt install -y g++ gdb make qtchooser qt5-qmake qt5-default gdb
+sudo apt install -y g++ gdb make qtchooser qt5-qmake qt5-default gdb cmake 
 
 ```
 
@@ -43,7 +43,7 @@ git clone https://github.com/sunowsir/rj-aux.git
 cd rj-aux/
 mkdir build
 cd build/
-qmake ..
+cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 ../
 make 
 ```
 
@@ -53,10 +53,10 @@ make
 > 打包的deb安装包中集成了锐捷官方程序、增加了缺少的必要的动态链接库，安装后可以直接使用。
  1. 按照上述编译流程进行编译
  2. `mkdir rj-aux.sunowsir.com.github`，# 创建构建目录
- 3. `cp ./build/rj-aux ./opt/rjsupplicant-aux/` # 将编译生成的二进制文件拷贝到软件目录
- 4. 插上学校网线打开浏览器会弹出下载界面，下载锐捷linux客户端，解压到当前项目目录中
+ 3. `cp -r ./build/rj-aux ./opt/rjsupplicant-aux/` # 将编译生成的二进制文件拷贝到软件目录
+ 4. 插上学校校园网网线打开浏览器会弹出下载界面，下载锐捷linux客户端(或通过其他下载渠道)，解压到当前项目目录中
  5. `cp -r ./RG_SU_For_Linux_4_90/rjsupplicant/x64/* ./opt/rjsupplicant-aux/` # 将锐捷程序以及其他配置文件拷贝到软件目录
- 6. `cp ./lib ./opt ./usr ./DEBIAN ./rj-aux.sunowsir.com.github/` # 将软件各个文件拷贝到打包目录
+ 6. `cp -r ./lib ./opt ./usr ./DEBIAN ./rj-aux.sunowsir.com.github/` # 将软件各个文件拷贝到打包目录
  7. `dpkg-deb -b ./rj-aux.sunowsir.com.github/` # 打包
 
 
