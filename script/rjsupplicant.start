@@ -1,8 +1,0 @@
-#!/bin/bash
-#
-#	* File      : rjsupplicant.sh
-#	* Author    : sunowsir
-#	* Mail      : sunowsir@163.com
-#	* Creation  : 2020年01月23日 星期四 10时04分41秒
-
-pkexec --user root /opt/rjsupplicant-aux/rjsupplicant "${@}"

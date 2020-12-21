@@ -56,8 +56,9 @@ make
  3. `cp -r ./build/rj-aux ./opt/rjsupplicant-aux/` # 将编译生成的二进制文件拷贝到软件目录
  4. 插上学校校园网网线打开浏览器会弹出下载界面，下载锐捷linux客户端(或通过其他下载渠道)，解压到当前项目目录中
  5. `cp -r ./RG_SU_For_Linux_4_90/rjsupplicant/x64/* ./opt/rjsupplicant-aux/` # 将锐捷程序以及其他配置文件拷贝到软件目录
- 6. `cp -r ./lib ./opt ./usr ./DEBIAN ./rj-aux.sunowsir.com.github/` # 将软件各个文件拷贝到打包目录
- 7. `dpkg-deb -b ./rj-aux.sunowsir.com.github/` # 打包
+ 6. `cp -r ./build/rj-aux ./opt/rjsupplicant-aux/`
+ 7. `cp -r ./lib ./opt ./usr ./DEBIAN ./rj-aux.sunowsir.com.github/` # 将软件各个文件拷贝到打包目录
+ 8. `dpkg-deb -b ./rj-aux.sunowsir.com.github/` # 打包
 
 
 
