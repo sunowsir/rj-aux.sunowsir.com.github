@@ -5,6 +5,8 @@
 #include <QtGui>
 #include <QWidget>
 #include <QProcess>
+#include <QFileDialog>
+#include <QMessageBox>
 #include <QSystemTrayIcon>
 
 class TrayWidget : public QWidget

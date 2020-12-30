@@ -58,7 +58,16 @@ TrayWidget::TrayWidget(QWidget *parent) : QWidget(parent)
 /* slot */
 
 void TrayWidget::load_core() {
-
+	QString fileName = QFileDialog::getOpenFileName(
+		this, 
+		tr("open a file."),
+		"~/", 
+		tr("*"));
+	if (fileName.isEmpty()) {
+		QMessageBox::warning(this, "Warning!", "Failed to open the video!");
+	}
+	else {
+	}
 }
 
 void TrayWidget::show_about() {

@@ -18,6 +18,7 @@ loginWidget::loginWidget( QMainWindow *parent ) : QWidget( parent )
     this->account_label = new QLabel(this);
     this->account_label->setText( "账号" );
     this->account_label->move( 200, 150 );
+    this->account_label->resize(100, 30);
 
 
     /* account line edit  */
@@ -33,6 +34,7 @@ loginWidget::loginWidget( QMainWindow *parent ) : QWidget( parent )
     this->password_label = new QLabel( this );
     this->password_label->setText( "密码" );
     this->password_label->move( 200, 210 );
+    this->password_label->resize(100, 30);
 
 
     /* password line edit */
@@ -55,6 +57,7 @@ loginWidget::loginWidget( QMainWindow *parent ) : QWidget( parent )
     this->netcard_label = new QLabel( this );
     this->netcard_label->setText( "网卡" );
     this->netcard_label->move( 200, 270 );
+    this->netcard_label->resize(100, 30);
 
     /* choose net card QComboBox */
     this->netcard_combox = new QComboBox( this );
