@@ -22,5 +22,11 @@ core_manager::~core_manager() {
     delete this->status_args;
 }
 
-core_manager core_manager::get_core_mgr_pro() {
+core_manager* core_manager::get_core_mgr_pro() {
+    if (core_manager::public_core_mgr_pro == nullptr) {
+        core_manager::public_core_mgr_pro = new core_manager;
+    }
+
+    return core_manager::public_core_mgr_pro;
 }
+

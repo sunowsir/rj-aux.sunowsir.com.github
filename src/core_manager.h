@@ -25,11 +25,13 @@ private:
     QStringList *logout_args;
     QStringList *status_args;
 
+    static core_manager *public_core_mgr_pro;
+
 public: 
     core_manager(QMainWindow *parent = nullptr);
     ~core_manager();
 
-    static core_manager get_core_mgr_pro();
+    static core_manager* get_core_mgr_pro();
 };
 
 #endif
