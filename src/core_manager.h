@@ -9,24 +9,27 @@
 #ifndef _CORE_MANAGER_H
 #define _CORE_MANAGER_H
 
-#include <QObject>
+#include <QWidget>
+#include <QMainWindow>
 
 #include <QList>
 #include <QString>
 
-class core_manager {
+class core_manager : public QWidget {
 private: 
     Q_OBJECT;
 
-    QString core;
+    QString *core;
 
-    QStringList login_args;
-    QStringList logout_args;
-    QStringList status_args;
-    QStringList info_args;
+    QStringList *login_args;
+    QStringList *logout_args;
+    QStringList *status_args;
 
 public: 
+    core_manager(QMainWindow *parent = nullptr);
+    ~core_manager();
 
+    static core_manager get_core_mgr_pro();
 };
 
 #endif
