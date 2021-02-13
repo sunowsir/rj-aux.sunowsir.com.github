@@ -14,10 +14,11 @@ TrayWidget::TrayWidget(QWidget *parent) : QWidget(parent)
     this->core_act = new QAction(this);
     this->about_act = new QAction(this);
     this->exit_act = new QAction(this);
+    this->st_widget = new setting_widget();
 
     this->show_act->setText(tr("显示"));
     this->hide_act->setText(tr("隐藏"));
-    this->core_act->setText(tr("核心"));
+    this->core_act->setText(tr("设置"));
     this->about_act->setText(tr("关于"));
     this->exit_act->setText(tr("退出"));
 
@@ -32,6 +33,9 @@ TrayWidget::TrayWidget(QWidget *parent) : QWidget(parent)
     this->menu->addAction(this->exit_act);
 
 
+    /* setting widget */
+
+
     /* connect signal with slot. */
 
     QWidget::connect(this->tray_icon, SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
@@ -44,7 +48,7 @@ TrayWidget::TrayWidget(QWidget *parent) : QWidget(parent)
                     parent, SLOT(hide()),
                     Qt::AutoConnection);
     QWidget::connect(this->core_act, SIGNAL(triggered()),
-                    this, SLOT(load_core()),
+                    this, SLOT(setting()),
                     Qt::AutoConnection);
     QWidget::connect(this->about_act, SIGNAL(triggered()),
                     this, SLOT(show_about()),
@@ -57,17 +61,19 @@ TrayWidget::TrayWidget(QWidget *parent) : QWidget(parent)
 
 /* slot */
 
-void TrayWidget::load_core() {
-	QString fileName = QFileDialog::getOpenFileName(
-		this, 
-		tr("open a file."),
-		"~/", 
-		tr("*"));
-	if (fileName.isEmpty()) {
-		QMessageBox::warning(this, "Warning!", "Failed to open the video!");
-	}
-	else {
-	}
+void TrayWidget::setting() {
+    this->st_widget->show();
+
+	// QString fileName = QFileDialog::getOpenFileName(
+	// 	this, 
+	// 	tr("open a file."),
+	// 	"~/", 
+	// 	tr("*"));
+	// if (fileName.isEmpty()) {
+	// 	QMessageBox::warning(this, "Warning!", "Failed to open the video!");
+	// }
+	// else {
+	// }
 }
 
 void TrayWidget::show_about() {

@@ -9,6 +9,8 @@
 #include <QMessageBox>
 #include <QSystemTrayIcon>
 
+#include "setting_widget.h"
+
 class TrayWidget : public QWidget
 {
     Q_OBJECT
@@ -22,6 +24,7 @@ class TrayWidget : public QWidget
     QAction 		*about_act;
     QAction         *exit_act;
 
+    setting_widget  *st_widget;
 
 public:
     explicit TrayWidget(QWidget *parent = nullptr);
@@ -29,7 +32,7 @@ public:
 signals:
 
 public slots:
-    void load_core();
+    void setting();
     void show_about();
 };
 

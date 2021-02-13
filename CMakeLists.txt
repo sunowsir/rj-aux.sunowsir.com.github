@@ -21,6 +21,7 @@ add_executable(rj-aux
     src/traywidget.cpp
     src/loginwidget.cpp
     src/showinfowidget.cpp
+    src/setting_widget.cpp
     ${qrc_FILES}
 )
 
