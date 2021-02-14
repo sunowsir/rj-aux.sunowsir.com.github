@@ -21,15 +21,13 @@ class TrayWidget : public QWidget
 
     QAction         *show_act;
     QAction         *hide_act;
-    QAction 		*core_act;
+    QAction 		*setting_act;
     QAction 		*about_act;
     QAction         *exit_act;
-
 
     setting_window  *st;
 public:
     explicit TrayWidget(QMainWindow *parent = nullptr);
-
 signals:
 
 public slots:

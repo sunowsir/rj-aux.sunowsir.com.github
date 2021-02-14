@@ -12,9 +12,7 @@
 #include <QMenu>
 #include <QtGui>
 #include <QWidget>
-
 #include <QMainWindow>
-
 #include <QMessageBox>
 
 #include "setting_widget.h"
@@ -22,7 +20,7 @@
 class setting_window : public QMainWindow {
     Q_OBJECT
 
-    setting_widget *st;
+    setting_widget  *st;
 public:
     explicit setting_window(QWidget *parent = nullptr);
     ~setting_window();

@@ -14,7 +14,9 @@ setting_window::setting_window( QWidget *parent ) : QMainWindow(parent) {
     this->setWindowFlag(Qt::SubWindow);
 
     this->st = new setting_widget(this);
-    setCentralWidget(this->st);
+    this->setCentralWidget(this->st);
+    
+    this->centralWidget()->setLayout(this->st->get_layout());
 }
 
 setting_window::~setting_window() {

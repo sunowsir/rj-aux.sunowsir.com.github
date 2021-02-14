@@ -33,7 +33,6 @@ void MainWindow::trayAction(QSystemTrayIcon::ActivationReason reason) {
 
 /* rewrite */
 
-/*
 void MainWindow::changeEvent( QEvent *e ) {
     if ( ( e->type() == QEvent::WindowStateChange ) && this->isMinimized() ) {
         QTimer::singleShot( 100, this, SLOT( close() ) );
@@ -46,5 +45,4 @@ void MainWindow::closeEvent( QCloseEvent *e ) {
     this->hide();
 }
 
-*/
 

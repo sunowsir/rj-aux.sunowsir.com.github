@@ -10,13 +10,14 @@ TrayWidget::TrayWidget(QMainWindow *parent) {
     this->menu = new QMenu(this);
     this->show_act = new QAction(this);
     this->hide_act = new QAction(this);
-    this->core_act = new QAction(this);
+    this->setting_act = new QAction(this);
     this->about_act = new QAction(this);
     this->exit_act = new QAction(this);
+    this->st = new setting_window(this);
 
     this->show_act->setText(tr("显示"));
     this->hide_act->setText(tr("隐藏"));
-    this->core_act->setText(tr("设置"));
+    this->setting_act->setText(tr("设置"));
     this->about_act->setText(tr("关于"));
     this->exit_act->setText(tr("退出"));
 
@@ -26,7 +27,7 @@ TrayWidget::TrayWidget(QMainWindow *parent) {
     this->tray_icon->setContextMenu(this->menu);
     this->menu->addAction(this->show_act);
     this->menu->addAction(this->hide_act);
-    this->menu->addAction(this->core_act);
+    this->menu->addAction(this->setting_act);
     this->menu->addAction(this->about_act);
     this->menu->addAction(this->exit_act);
 
@@ -45,7 +46,7 @@ TrayWidget::TrayWidget(QMainWindow *parent) {
     QWidget::connect(this->hide_act, SIGNAL(triggered()),
                     parent, SLOT(hide()),
                     Qt::AutoConnection);
-    QWidget::connect(this->core_act, SIGNAL(triggered()),
+    QWidget::connect(this->setting_act, SIGNAL(triggered()),
                     this, SLOT(setting()),
                     Qt::AutoConnection);
     QWidget::connect(this->about_act, SIGNAL(triggered()),
@@ -60,7 +61,6 @@ TrayWidget::TrayWidget(QMainWindow *parent) {
 /* slot */
 
 void TrayWidget::setting() {
-    this->st = new setting_window(this);
     st->show();
 
 	// QString fileName = QFileDialog::getOpenFileName(
