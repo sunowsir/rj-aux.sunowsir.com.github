@@ -13,7 +13,6 @@ MainWindow::MainWindow(QWidget *parent)
     setCentralWidget(this->w);
 
     this->t = new TrayWidget(this);
-
 }
 
 MainWindow::~MainWindow() {

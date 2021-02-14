@@ -8,8 +8,9 @@
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QSystemTrayIcon>
+#include <QMainWindow>
 
-#include "setting_widget.h"
+#include "setting_window.h"
 
 class TrayWidget : public QWidget
 {
@@ -24,10 +25,10 @@ class TrayWidget : public QWidget
     QAction 		*about_act;
     QAction         *exit_act;
 
-    setting_widget  *st_widget;
 
+    setting_window  *st;
 public:
-    explicit TrayWidget(QWidget *parent = nullptr);
+    explicit TrayWidget(QMainWindow *parent = nullptr);
 
 signals:
 

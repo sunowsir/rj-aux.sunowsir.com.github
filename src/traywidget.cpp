@@ -1,7 +1,6 @@
 #include "traywidget.h"
 
-TrayWidget::TrayWidget(QWidget *parent) : QWidget(parent)
-{
+TrayWidget::TrayWidget(QMainWindow *parent) {
     /* tray */
 
     this->tray_icon = new QSystemTrayIcon(this);
@@ -14,7 +13,6 @@ TrayWidget::TrayWidget(QWidget *parent) : QWidget(parent)
     this->core_act = new QAction(this);
     this->about_act = new QAction(this);
     this->exit_act = new QAction(this);
-    this->st_widget = new setting_widget();
 
     this->show_act->setText(tr("显示"));
     this->hide_act->setText(tr("隐藏"));
@@ -62,7 +60,8 @@ TrayWidget::TrayWidget(QWidget *parent) : QWidget(parent)
 /* slot */
 
 void TrayWidget::setting() {
-    this->st_widget->show();
+    this->st = new setting_window(this);
+    st->show();
 
 	// QString fileName = QFileDialog::getOpenFileName(
 	// 	this, 

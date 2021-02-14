@@ -15,13 +15,12 @@
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
+
     loginWidget  *w;
     TrayWidget  *t;
-
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-
 protected:
     /*
     void closeEvent(QCloseEvent *event);
