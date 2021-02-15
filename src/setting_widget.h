@@ -20,7 +20,7 @@
 #include <QSettings>
 #include <QPushButton>
 #include <QMessageBox>
-#include <QSystemTrayIcon>
+#include <QFileDialog>
 
 #include <qlabel.h>
 #include <qlineedit.h>
@@ -36,10 +36,12 @@ class setting_widget : public QWidget {
     QMainWindow     *parent;
     QGridLayout     *setting_layout;
 
+    QLabel          *select_core_label;
     QLabel          *acct_arg_label;
     QLabel          *pass_arg_label;
     QLabel          *other_arg_label;
 
+    QPushButton     *select_core_button;
     QLineEdit       *acct_arg_input;
     QLineEdit       *pass_arg_input;
     QLineEdit       *other_arg_input;
@@ -51,6 +53,7 @@ public:
 
     QGridLayout     *get_layout();
 public slots:
+    void on_clicked_select_core_button();
     void get_account_arg_input(const QString&);
     void get_passwd_arg_input(const QString&);
     void get_other_arg_input(const QString&);

@@ -24,3 +24,19 @@ setting_window::~setting_window() {
     delete this->st;
 }
 
+
+/* rewrite */
+
+void setting_window::changeEvent( QEvent *e ) {
+    if ( ( e->type() == QEvent::WindowStateChange ) && this->isMinimized() ) {
+        QTimer::singleShot( 100, this, SLOT( close() ) );
+    }
+}
+
+
+void setting_window::closeEvent( QCloseEvent *e ) {
+    e->ignore();
+    this->hide();
+}
+
+

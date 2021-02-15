@@ -21,6 +21,9 @@ class setting_window : public QMainWindow {
     Q_OBJECT
 
     setting_widget  *st;
+protected:
+    void closeEvent(QCloseEvent *event);
+    void changeEvent(QEvent *e);
 public:
     explicit setting_window(QWidget *parent = nullptr);
     ~setting_window();
