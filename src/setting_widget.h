@@ -43,6 +43,8 @@ class setting_widget : public QWidget {
     QLineEdit       *acct_arg_input;
     QLineEdit       *pass_arg_input;
     QLineEdit       *other_arg_input;
+
+    QPushButton     *save_cfg;
 public:
     explicit setting_widget(QMainWindow *parent = nullptr);
     ~setting_widget();
@@ -52,6 +54,7 @@ public slots:
     void get_account_arg_input(const QString&);
     void get_passwd_arg_input(const QString&);
     void get_other_arg_input(const QString&);
+    void on_clicked_save_cfg_button();
 };
 
 #endif

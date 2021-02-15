@@ -34,25 +34,34 @@ setting_widget::setting_widget(QMainWindow *parent) {
     this->other_arg_input = new QLineEdit();
     this->other_arg_input->setText(QString("-a 1 -d 0"));
 
+    this->save_cfg = new QPushButton();
+    this->save_cfg->setText(tr("保存"));
+
 
     /* connect */
-    QWidget::connect(this->acct_arg_input, SIGNAL( textChanged( QString ) ),
+    QWidget::connect(this->acct_arg_input, SIGNAL(textChanged(QString)),
                       this, SLOT(get_account_arg_input(QString)),
                       Qt::AutoConnection);
-    QWidget::connect(this->pass_arg_input, SIGNAL( textChanged( QString ) ),
+    QWidget::connect(this->pass_arg_input, SIGNAL(textChanged(QString)),
                       this, SLOT(get_passwd_arg_input(QString)),
                       Qt::AutoConnection);
-    QWidget::connect(this->other_arg_input, SIGNAL( textChanged( QString ) ),
+    QWidget::connect(this->other_arg_input, SIGNAL(textChanged(QString)),
                       this, SLOT(get_other_arg_input(QString)),
                       Qt::AutoConnection);
+    QWidget::connect(this->save_cfg, SIGNAL(released()),
+                      this, SLOT(on_clicked_save_cfg_button()),
+                      Qt::AutoConnection);
 
+    this->setting_layout->addWidget(this->acct_arg_label, 0, 0, 1, 1);
+    this->setting_layout->addWidget(this->pass_arg_label, 1, 0, 1, 1);
+    this->setting_layout->addWidget(this->other_arg_label, 2, 0, 1, 1);
+    this->setting_layout->addWidget(this->acct_arg_input, 0, 1, 1, 1);
+    this->setting_layout->addWidget(this->pass_arg_input, 1, 1, 1, 1);
+    this->setting_layout->addWidget(this->other_arg_input, 2, 1, 1, 1);
+    this->setting_layout->addWidget(this->save_cfg, 3, 0, 2, 2, Qt::AlignHCenter);
 
-    this->setting_layout->addWidget(this->acct_arg_label, 200, 150);
-    this->setting_layout->addWidget(this->pass_arg_label, 200, 210);
-    this->setting_layout->addWidget(this->other_arg_label, 200, 270);
-    this->setting_layout->addWidget(this->acct_arg_input, 250, 150);
-    this->setting_layout->addWidget(this->pass_arg_input, 250, 210);
-    this->setting_layout->addWidget(this->other_arg_input, 250, 270);
+    this->setting_layout->setHorizontalSpacing(20);
+    this->setting_layout->setVerticalSpacing(20);
 }
 
 setting_widget::~setting_widget() {
@@ -74,5 +83,9 @@ void setting_widget::get_passwd_arg_input(const QString&) {
 }
 
 void setting_widget::get_other_arg_input(const QString&) {
+    
+}
+
+void setting_widget::on_clicked_save_cfg_button() {
     
 }

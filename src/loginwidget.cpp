@@ -27,6 +27,7 @@ loginWidget::loginWidget( QMainWindow *parent ) : QWidget( parent )
     this->account_input->setText( this->account = this->default_account );
     // this->lineedit_acco_num->setPlaceholderText("please input account");
     this->account_input->move( 260, 145 );
+    this->account_input->resize(150, 30);
 
 
     /* password label */
@@ -44,6 +45,7 @@ loginWidget::loginWidget( QMainWindow *parent ) : QWidget( parent )
     this->password_input->setText( this->password = default_password );
     // this->passwordedit_pass_num->setPlaceholderText("please input password");
     this->password_input->move( 260, 205 );
+    this->password_input->resize(150, 30);
 
 
 
@@ -62,6 +64,7 @@ loginWidget::loginWidget( QMainWindow *parent ) : QWidget( parent )
     /* choose net card QComboBox */
     this->netcard_combox = new QComboBox( this );
     this->netcard_combox->move( 260, 265 );
+    this->netcard_combox->resize(150, 30);
     this->netcard_combox->addItems( this->netcard_list );
 
 

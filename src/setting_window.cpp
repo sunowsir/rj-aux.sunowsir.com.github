@@ -9,7 +9,7 @@
 #include "setting_window.h"
 
 setting_window::setting_window( QWidget *parent ) : QMainWindow(parent) {
-    this->setFixedSize(540, 440);
+    this->setFixedSize(300, 300);
     this->setWindowTitle(tr("rj-aux设置"));
     this->setWindowFlag(Qt::SubWindow);
 
