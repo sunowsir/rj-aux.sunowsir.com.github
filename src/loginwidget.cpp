@@ -321,4 +321,7 @@ void loginWidget::getNetCardChoice( const QString& choice_str ) {
     this->netcard = choice_str;
 }
 
+void loginWidget::on_clicked_save_cfg_button() {
+	QMessageBox::warning(this, "Test", "数据交互成功！");
+}
 

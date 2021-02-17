@@ -13,6 +13,10 @@ MainWindow::MainWindow(QWidget *parent)
     setCentralWidget(this->w);
 
     this->t = new TrayWidget(this);
+
+    QWidget::connect(this->t, SIGNAL(save_cfg_button_released()),
+                      this->w, SLOT(on_clicked_save_cfg_button()),
+                      Qt::AutoConnection);
 }
 
 MainWindow::~MainWindow() {
@@ -44,5 +48,4 @@ void MainWindow::closeEvent( QCloseEvent *e ) {
     e->ignore();
     this->hide();
 }
-
 

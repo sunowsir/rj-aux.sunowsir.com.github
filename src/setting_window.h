@@ -20,13 +20,17 @@
 class setting_window : public QMainWindow {
     Q_OBJECT
 
-    setting_widget  *st;
+    setting_widget  *st_widget;
 protected:
     void closeEvent(QCloseEvent *event);
     void changeEvent(QEvent *e);
 public:
     explicit setting_window(QWidget *parent = nullptr);
     ~setting_window();
+public slots:
+    void on_clicked_save_cfg_button();
+signals:
+    void save_cfg_button_released();
 };
 
 #endif

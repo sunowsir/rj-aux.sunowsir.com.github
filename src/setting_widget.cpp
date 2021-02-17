@@ -112,5 +112,5 @@ void setting_widget::get_other_arg_input(const QString&) {
 }
 
 void setting_widget::on_clicked_save_cfg_button() {
-    
+    emit this->save_cfg_button_released();
 }

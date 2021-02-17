@@ -99,6 +99,7 @@ public slots:
     void getAccountInput(const QString&);
     void getPasswordInput(const QString&);
     void getNetCardChoice(const QString&);
+    void on_clicked_save_cfg_button();
 };
 
 #endif // loginWIDGET_H

@@ -29,6 +29,7 @@
 #include <QMainWindow>
 #include <QGridLayout>
 
+
 class setting_widget : public QWidget {
     Q_OBJECT
 
@@ -58,6 +59,8 @@ public slots:
     void get_passwd_arg_input(const QString&);
     void get_other_arg_input(const QString&);
     void on_clicked_save_cfg_button();
+signals:
+    void save_cfg_button_released();
 };
 
 #endif

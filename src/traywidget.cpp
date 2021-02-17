@@ -55,6 +55,9 @@ TrayWidget::TrayWidget(QMainWindow *parent) {
     QWidget::connect(this->exit_act, SIGNAL(triggered()),
                     qApp, SLOT(quit()),
                     Qt::AutoConnection);
+    QWidget::connect(this->st, SIGNAL(save_cfg_button_released()),
+                      this, SLOT(on_clicked_save_cfg_button()),
+                      Qt::AutoConnection);
 }
 
 
@@ -77,4 +80,8 @@ void TrayWidget::setting() {
 
 void TrayWidget::show_about() {
 
+}
+
+void TrayWidget::on_clicked_save_cfg_button() {
+    emit this->save_cfg_button_released();
 }

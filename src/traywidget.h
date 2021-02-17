@@ -33,6 +33,10 @@ signals:
 public slots:
     void setting();
     void show_about();
+public slots:
+    void on_clicked_save_cfg_button();
+signals:
+    void save_cfg_button_released();
 };
 
 #endif // TRAYWIDGET_H
