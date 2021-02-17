@@ -15,25 +15,22 @@
 #include <QWidget>
 #include <QDialog>
 #include <QString>
+#include <qlabel.h>
 #include <QCheckBox>
 #include <QComboBox>
-#include <QSettings>
 #include <QPushButton>
 #include <QMessageBox>
 #include <QFileDialog>
 
-#include <qlabel.h>
 #include <qlineedit.h>
 #include <qtextedit.h>
 
 #include <QMainWindow>
 #include <QGridLayout>
 
-
 class setting_widget : public QWidget {
     Q_OBJECT
 
-    QSettings       *settings;
     QMainWindow     *parent;
     QGridLayout     *setting_layout;
 

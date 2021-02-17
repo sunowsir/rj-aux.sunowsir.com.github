@@ -60,22 +60,10 @@ TrayWidget::TrayWidget(QMainWindow *parent) {
                       Qt::AutoConnection);
 }
 
-
 /* slot */
 
 void TrayWidget::setting() {
     st->show();
-
-	// QString fileName = QFileDialog::getOpenFileName(
-	// 	this, 
-	// 	tr("open a file."),
-	// 	"~/", 
-	// 	tr("*"));
-	// if (fileName.isEmpty()) {
-	// 	QMessageBox::warning(this, "Warning!", "Failed to open the video!");
-	// }
-	// else {
-	// }
 }
 
 void TrayWidget::show_about() {

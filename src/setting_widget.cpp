@@ -9,8 +9,6 @@
 #include "setting_widget.h"
 
 setting_widget::setting_widget(QMainWindow *parent) {
-    this->settings = new QSettings( QCoreApplication::applicationDirPath() + "/setting_Config.ini", QSettings::IniFormat );
-
     this->parent = parent;
     this->setParent(parent);
     this->setting_layout = new QGridLayout();
