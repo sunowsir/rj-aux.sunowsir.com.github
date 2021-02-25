@@ -45,11 +45,17 @@ class setting_widget : public QWidget {
     QLineEdit       *other_arg_input;
 
     QPushButton     *save_cfg;
+
+    /* 保存设置信息 */
+    QStringList     *set_info;
+
+    bool            core_file_assigned;
 public:
     explicit setting_widget(QMainWindow *parent = nullptr);
     ~setting_widget();
 
     QGridLayout     *get_layout();
+    bool get_core_assigned_status();
 public slots:
     void on_clicked_select_core_button();
     void get_account_arg_input(const QString&);
@@ -57,7 +63,7 @@ public slots:
     void get_other_arg_input(const QString&);
     void on_clicked_save_cfg_button();
 signals:
-    void save_cfg_button_released();
+    void save_cfg_button_released(const QStringList&);
 };
 
 #endif

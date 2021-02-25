@@ -14,8 +14,8 @@ MainWindow::MainWindow(QWidget *parent)
 
     this->t = new TrayWidget(this);
 
-    QWidget::connect(this->t, SIGNAL(save_cfg_button_released()),
-                      this->w, SLOT(on_clicked_save_cfg_button()),
+    QWidget::connect(this->t, SIGNAL(save_cfg_button_released(const QStringList&)),
+                      this->w, SLOT(on_clicked_save_cfg_button(const QStringList&)),
                       Qt::AutoConnection);
 }
 

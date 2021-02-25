@@ -40,6 +40,9 @@ setting_widget::setting_widget(QMainWindow *parent) {
     this->save_cfg = new QPushButton();
     this->save_cfg->setText(tr("保存"));
 
+    this->set_info = new QStringList;
+    this->core_file_assigned = false;
+
 
     /* connect */
 
@@ -82,33 +85,40 @@ QGridLayout* setting_widget::get_layout() {
     return this->setting_layout;
 }
 
+bool setting_widget::get_core_assigned_status() {
+    return this->core_file_assigned;
+}
+
 /* solt func */
 
 void setting_widget::on_clicked_select_core_button() {
 	QString fileName = QFileDialog::getOpenFileName(
 		this, 
-		tr("open a file."),
+		tr("select app core."),
 		"~/", 
 		tr("*"));
-	if (fileName.isEmpty()) {
-		QMessageBox::warning(this, "Warning!", "Failed to open the video!");
+	if (!fileName.isEmpty()) {
+        this->core_file_assigned = true;
+        *(this->set_info) << fileName;
 	}
-	else {
-	}
 }
 
-void setting_widget::get_account_arg_input(const QString&) {
-    
+void setting_widget::get_account_arg_input(const QString& input_str) {
+    *(this->set_info) << input_str;
 }
 
-void setting_widget::get_passwd_arg_input(const QString&) {
-    
+void setting_widget::get_passwd_arg_input(const QString& input_str) {
+    *(this->set_info) << input_str;
 }
 
-void setting_widget::get_other_arg_input(const QString&) {
-    
+void setting_widget::get_other_arg_input(const QString& input_str) {
+    *(this->set_info) << input_str;
 }
 
 void setting_widget::on_clicked_save_cfg_button() {
-    emit this->save_cfg_button_released();
+    if (!this->core_file_assigned) {
+        this->set_info->clear();
+    }
+    emit this->save_cfg_button_released(*(this->set_info));
 }
+

@@ -9,7 +9,7 @@
 #include "setting_window.h"
 
 setting_window::setting_window(QWidget *parent) {
-    this->setFixedSize(300, 300);
+    this->setFixedSize(350, 350);
     this->setWindowTitle(tr("rj-aux设置"));
     this->setWindowFlag(Qt::SubWindow);
 
@@ -18,8 +18,8 @@ setting_window::setting_window(QWidget *parent) {
     
     this->centralWidget()->setLayout(this->st_widget->get_layout());
 
-    QWidget::connect(this->st_widget, SIGNAL(save_cfg_button_released()),
-                      this, SLOT(on_clicked_save_cfg_button()),
+    QWidget::connect(this->st_widget, SIGNAL(save_cfg_button_released(const QStringList&)),
+                      this, SLOT(on_clicked_save_cfg_button(const QStringList&)),
                       Qt::AutoConnection);
 }
 
@@ -40,9 +40,16 @@ void setting_window::changeEvent(QEvent *e) {
 
 void setting_window::closeEvent(QCloseEvent *e) {
     e->ignore();
+
+    if (!this->st_widget->get_core_assigned_status()) {
+        QMessageBox::critical(this, tr("警告"),  tr("请选择认证核心程序"),
+                              QMessageBox::Ok, QMessageBox::Ok);
+        return ;
+    }
+
     this->hide();
 }
 
-void setting_window::on_clicked_save_cfg_button() {
-    emit this->save_cfg_button_released();
+void setting_window::on_clicked_save_cfg_button(const QStringList& set_info) {
+    emit this->save_cfg_button_released(set_info);
 }

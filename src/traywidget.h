@@ -34,9 +34,9 @@ public slots:
     void setting();
     void show_about();
 public slots:
-    void on_clicked_save_cfg_button();
+    void on_clicked_save_cfg_button(const QStringList&);
 signals:
-    void save_cfg_button_released();
+    void save_cfg_button_released(const QStringList&);
 };
 
 #endif // TRAYWIDGET_H

@@ -55,8 +55,8 @@ TrayWidget::TrayWidget(QMainWindow *parent) {
     QWidget::connect(this->exit_act, SIGNAL(triggered()),
                     qApp, SLOT(quit()),
                     Qt::AutoConnection);
-    QWidget::connect(this->st, SIGNAL(save_cfg_button_released()),
-                      this, SLOT(on_clicked_save_cfg_button()),
+    QWidget::connect(this->st, SIGNAL(save_cfg_button_released(const QStringList&)),
+                      this, SLOT(on_clicked_save_cfg_button(const QStringList&)),
                       Qt::AutoConnection);
 }
 
@@ -70,6 +70,6 @@ void TrayWidget::show_about() {
 
 }
 
-void TrayWidget::on_clicked_save_cfg_button() {
-    emit this->save_cfg_button_released();
+void TrayWidget::on_clicked_save_cfg_button(const QStringList& st_info) {
+    emit this->save_cfg_button_released(st_info);
 }

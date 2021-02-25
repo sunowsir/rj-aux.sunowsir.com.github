@@ -286,7 +286,7 @@ void loginWidget::getNetCardChoice(const QString& choice_str) {
     this->netcard = choice_str;
 }
 
-void loginWidget::on_clicked_save_cfg_button() {
-	QMessageBox::warning(this, "Test", "数据交互成功！");
+void loginWidget::on_clicked_save_cfg_button(const QStringList& st_info) {
+	QMessageBox::warning(this, "交互测试", "认证窗口接收到设置窗口保存按钮点击事件");
 }
 
